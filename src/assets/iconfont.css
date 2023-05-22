@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1633934362862') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e7fc";
+}
+
+.icon-check-circle-fill:before {
+  content: "\e844";
+}
+
+.icon-close-circle-fill:before {
+  content: "\e845";
+}
+
+.icon-warning-circle-fill:before {
+  content: "\e848";
+}
+

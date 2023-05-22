@@ -1,0 +1,312 @@
+$primaryColor: #1184f5;
+$primaryHoverColor: #3692ee;
+$primaryActiveColor: #0a7eef;
+$primaryShadowColor: rgba(81, 171, 222, 0.66);
+
+$defaultColor: #ffffff;
+$defaultBorderColor: #c7c7c7;
+$defaultHoverColor: #1184f5;
+$defaultActiveColor: #0766c4;
+
+$dangerColor: #f85d5d;
+$dangerHoverColor: #f86e6e;
+$dangerActiveColor: #fa4d4d;
+$dangerShadowColor: rgba(243, 123, 123, 0.58);
+
+$wrongColor: #fda613;
+$wrongHoverColor: #f8b03e;
+$wrongActiveColor: #ef9c0f;
+$wrongShadowColor: rgba(255, 183, 79, 0.66);
+
+$successColor: #25a358;
+$successHoverColor: #3ebd71;
+$successActiveColor: #167f41;
+$successShadowColor: rgba(100, 217, 147, 0.58);
+
+$disabledColor: #f3f3f3;
+$disabledBorderColor: #cbcbcb;
+
+$whiteColor: #fff;
+$blackColor: #000;
+
+/*
+ base|hover|active - (color,background-color,border-color),
+ ghost - (normal,hover,active)
+ shadow - animation
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$buttonType: (
+  default: (
+    base: (
+      $blackColor,
+      $defaultColor,
+      $defaultBorderColor
+    ),
+    hover: (
+      $primaryHoverColor,
+      $defaultColor,
+      $defaultHoverColor
+    ),
+    active: (
+      $primaryActiveColor,
+      $defaultColor,
+      $defaultActiveColor
+    ),
+    ghost: (
+      $whiteColor,
+      $primaryHoverColor,
+      $primaryActiveColor
+    ),
+    shadow: $primaryShadowColor
+  ),
+  primary: (
+    base: (
+      $whiteColor,
+      $primaryColor,
+      null
+    ),
+    hover: (
+      $whiteColor,
+      $primaryHoverColor,
+      null
+    ),
+    active: (
+      $whiteColor,
+      $primaryActiveColor,
+      null
+    ),
+    ghost: (
+      $primaryColor,
+      $primaryHoverColor,
+      $primaryActiveColor
+    ),
+    shadow: $primaryShadowColor
+  ),
+  danger: (
+    base: (
+      $whiteColor,
+      $dangerColor,
+      null
+    ),
+    hover: (
+      $whiteColor,
+      $dangerHoverColor,
+      null
+    ),
+    active: (
+      $whiteColor,
+      $dangerActiveColor,
+      null
+    ),
+    ghost: (
+      $dangerColor,
+      $dangerHoverColor,
+      $dangerActiveColor
+    ),
+    shadow: $dangerShadowColor
+  ),
+  wrong: (
+    base: (
+      $whiteColor,
+      $wrongColor,
+      null
+    ),
+    hover: (
+      $whiteColor,
+      $wrongHoverColor,
+      null
+    ),
+    active: (
+      $whiteColor,
+      $wrongActiveColor,
+      null
+    ),
+    ghost: (
+      $wrongColor,
+      $wrongHoverColor,
+      $wrongActiveColor
+    ),
+    shadow: $wrongShadowColor
+  ),
+  success: (
+    base: (
+      $whiteColor,
+      $successColor,
+      null
+    ),
+    hover: (
+      $whiteColor,
+      $successHoverColor,
+      null
+    ),
+    active: (
+      $whiteColor,
+      $successActiveColor,
+      null
+    ),
+    ghost: (
+      $successColor,
+      $successHoverColor,
+      $successActiveColor
+    ),
+    shadow: $successShadowColor
+  )
+);
+
+.lee-button {
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: pointer;
+  height: 32px;
+  padding: 0 16px;
+  position: relative;
+  white-space: nowrap;
+
+  .lee-button-content {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    * {
+      vertical-align: middle;
+    }
+  }
+}
+
+.lee-large-button {
+  font-size: 18px;
+  height: 40px;
+}
+
+.lee-small-button {
+  height: auto;
+  font-size: 12px;
+  padding: 2px 6px;
+}
+
+.lee-loading-button {
+  pointer-events: none;
+
+  &:before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    opacity: 0.3;
+    content: '';
+    background-color: #fff;
+  }
+}
+
+.lee-disabled-button {
+  cursor: not-allowed;
+  background-color: $disabledColor;
+  border: 1px solid $disabledBorderColor;
+  color: $disabledBorderColor;
+}
+
+.lee-disabled-dash-button {
+  cursor: not-allowed;
+  background-color: transparent;
+  border: 1px dashed $disabledBorderColor;
+  color: $disabledBorderColor;
+}
+
+@each $typeName, $colors in $buttonType {
+  $baseColor: nth(map-get($colors, base), 1);
+  $baseBgColor: nth(map-get($colors, base), 2);
+  $baseBdColor: nth(map-get($colors, base), 3);
+
+  $hoverColor: nth(map-get($colors, hover), 1);
+  $hoverBgColor: nth(map-get($colors, hover), 2);
+  $hoverBdColor: nth(map-get($colors, hover), 3);
+
+  $activeColor: nth(map-get($colors, active), 1);
+  $activeBgColor: nth(map-get($colors, active), 2);
+  $activeBdColor: nth(map-get($colors, active), 3);
+
+  $ghostColor: nth(map-get($colors, ghost), 1);
+  $ghostHoverColor: nth(map-get($colors, ghost), 2);
+  $ghostActiveColor: nth(map-get($colors, ghost), 3);
+
+  $shadowColor: map-get($colors, shadow);
+
+  .lee-#{$typeName}-button {
+    color: $baseColor;
+    background-color: $baseBgColor;
+    @if ($baseBdColor) {
+      border: 1px solid $baseBdColor;
+    }
+
+    &:hover {
+      color: $hoverColor;
+      background-color: $hoverBgColor;
+      @if ($hoverBdColor) {
+        border: 1px solid $hoverBdColor;
+      }
+    }
+
+    &:active {
+      color: $activeColor;
+      background-color: $activeBgColor;
+      @if ($activeBdColor) {
+        border: 1px solid $activeBdColor;
+      }
+    }
+  }
+
+  .lee-#{$typeName}-ghost-button {
+    color: $ghostColor;
+    background-color: transparent;
+    border: 1px solid $ghostColor;
+
+    &:hover {
+      color: $ghostHoverColor;
+      border: 1px solid $ghostHoverColor;
+    }
+
+    &:active {
+      color: $ghostActiveColor;
+      border: 1px solid $ghostActiveColor;
+    }
+  }
+
+  .lee-#{$typeName}-dash-button {
+    color: $ghostColor;
+    background-color: transparent;
+    border: 1px dashed $ghostColor;
+
+    &:hover {
+      color: $ghostHoverColor;
+      border: 1px dashed $ghostHoverColor;
+    }
+
+    &:active {
+      color: $ghostActiveColor;
+      border: 1px dashed $ghostActiveColor;
+    }
+  }
+
+  @if ($shadowColor) {
+    .lee-#{$typeName}-shadow {
+      animation: #{$typeName}Shadow 0.5s linear;
+    }
+    @keyframes #{$typeName}Shadow {
+      0% {
+        box-shadow: 0 0 14px 0 $shadowColor;
+      }
+      100% {
+        box-shadow: none;
+      }
+    }
+  }
+}

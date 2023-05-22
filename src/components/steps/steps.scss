@@ -1,0 +1,28 @@
+.lee {
+  &-steps-container {
+    display: inline-table;
+    & > .lee-step-item:last-child .lee-step-line {
+      display: none;
+    }
+  }
+  &-steps-row {
+    display: table-row;
+  }
+  &-steps-left-area {
+    display: table-column;
+  }
+  &-steps-dot-area {
+    display: table-column;
+    min-width: 50px;
+  }
+  &-steps-right-area {
+    display: table-column;
+  }
+
+  &-h-steps-container {
+    white-space: nowrap;
+    & > .lee-h-step-item:last-child .lee-h-step-line {
+      display: none;
+    }
+  }
+}

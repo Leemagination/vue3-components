@@ -1,0 +1,28 @@
+.lee {
+  &-timeline-container {
+    display: inline-table;
+    & > .lee-timeline-item:last-child .lee-timeline-line {
+      display: none;
+    }
+  }
+  &-timeline-row {
+    display: table-row;
+  }
+  &-timeline-left-area {
+    display: table-column;
+  }
+  &-timeline-dot-area {
+    display: table-column;
+    min-width: 32px;
+  }
+  &-timeline-right-area {
+    display: table-column;
+  }
+
+  &-h-timeline-container {
+    white-space: nowrap;
+    & > .lee-h-timeline-item:last-child .lee-h-timeline-line {
+      display: none;
+    }
+  }
+}

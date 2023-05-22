@@ -1,0 +1,67 @@
+$activeBorder: 1px solid #1a85ff;
+$normalBorder: 1px solid #c5c5c5;
+.lee-textarea {
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 14px;
+  font-family: inherit;
+  position: relative;
+  & > textarea {
+    border-radius: 2px;
+    border: $normalBorder;
+    padding: 4px 6px;
+    transition: border 0.2s linear;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    width: 100%;
+    min-height: 1em;
+    &:focus {
+      outline: none;
+    }
+    &:not(.lee-textarea-disabled):not(.lee-textarea-no-border):hover {
+      border: $activeBorder;
+    }
+    &.lee-textarea-active:not(.lee-textarea-no-border) {
+      border: $activeBorder;
+      box-shadow: 0 0 2px 2px rgba(26, 133, 255, 0.15);
+    }
+    &.lee-textarea-disabled {
+      background-color: rgb(250, 250, 250);
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .lee-textarea-count-margin {
+    margin-bottom: 20px;
+  }
+  .lee-textarea-clear-padding {
+    padding-right: 18px;
+  }
+  .lee-textarea-count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #626262;
+  }
+  .lee-textarea-clear {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 12px;
+    border-radius: 50%;
+    background-color: #c7c7c7;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    vertical-align: middle;
+    transition: background-color 0.1s linear;
+    transform: rotate(45deg);
+    margin: 0 6px;
+    &:hover {
+      background-color: #b0b0b0;
+    }
+  }
+}

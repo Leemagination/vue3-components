@@ -1,0 +1,75 @@
+@use "sass:math";
+$controlColor: #fff;
+$switchCLoseBgColor: #cbcbcb;
+$switchActiveBgColor: #1184f5;
+$switchHeight: 24;
+$controlSpace: 6;
+.lee-switch {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  min-width: ($switchHeight * 2) + px;
+  height: $switchHeight + px;
+  border-radius: $switchHeight + px;
+  line-height: $switchHeight + px;
+  transition: all 0.1s linear;
+  text-align: left;
+  &-control {
+    position: absolute;
+    border-radius: 50%;
+    transition: all 0.3s linear;
+    box-shadow: 0 1px 4px 0 #7b7b7b;
+    left: 4px;
+    top: math.div($controlSpace, 2) + px;
+    background-color: $controlColor;
+    height: ($switchHeight - $controlSpace) + px;
+    width: ($switchHeight - $controlSpace) + px;
+  }
+  &-text {
+    user-select: none;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    left: 0;
+    font-weight: bold;
+    color: white;
+    transition: all 0.2s linear;
+  }
+}
+
+.lee-disabled-switch {
+  &:before {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    content: '';
+    z-index: 1;
+    cursor: not-allowed;
+    opacity: 0.3;
+    background-color: #fff;
+  }
+}
+
+.lee-close-switch {
+  background-color: $switchCLoseBgColor;
+  & .lee-switch-text {
+    left: 100%;
+    padding: 0 8px 0 28px;
+    transform: translateX(-100%);
+  }
+}
+
+.lee-active-switch {
+  background-color: $switchActiveBgColor;
+  & .lee-switch-text {
+    left: 0;
+    padding: 0 28px 0 8px;
+  }
+  & .lee-switch-control {
+    left: 100%;
+    transform: translateX(calc(-100% - 4px));
+    box-shadow: 0 1px 4px 0 #5f5f5f;
+  }
+}

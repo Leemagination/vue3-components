@@ -1,0 +1,73 @@
+$checkedColor: #1184f5;
+
+$tagType: (
+  default: (
+    bgColor: #f3f3f3,
+    bdColor: #cbcbcb,
+    color: unset
+  ),
+  primary: (
+    bgColor: #daf2ff,
+    bdColor: #5bbbf8,
+    color: #20a3fa
+  ),
+  success: (
+    bgColor: #b3ffb3,
+    bdColor: #63dc63,
+    color: #21c421
+  ),
+  danger: (
+    bgColor: #ffd7d7,
+    bdColor: #ffa2a2,
+    color: #ff7272
+  ),
+  warning: (
+    bgColor: #ffe8b9,
+    bdColor: #ffcf7a,
+    color: #ffb625
+  )
+);
+
+.lee-tag {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: map-get(map-get($tagType, default), bgColor);
+  border: 1px solid map-get(map-get($tagType, default), bdColor);
+  transition: all 0.3s linear;
+}
+
+@each $type, $colors in $tagType {
+  $bgColor: map-get($colors, bgColor);
+  $bdColor: map-get($colors, bdColor);
+  $color: map-get($colors, color);
+
+  .lee-#{$type}-tag {
+    background-color: $bgColor;
+    color: $color;
+    border: 1px solid $bdColor;
+  }
+}
+
+.lee-checked-tag {
+  background-color: $checkedColor;
+  color: #fff;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.lee-uncheck-tag {
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.lee-tag-close-icon {
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+}

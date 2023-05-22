@@ -1,0 +1,12 @@
+.lee-loading-svg {
+  animation: loadingRotate linear infinite;
+}
+
+@keyframes loadingRotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

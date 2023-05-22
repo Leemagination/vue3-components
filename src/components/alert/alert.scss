@@ -1,0 +1,57 @@
+.lee {
+  &-alert-container {
+    color: #252623;
+    margin: 10px 20px;
+    border-radius: 6px;
+    text-align: left;
+    padding: 6px 16px;
+    min-height: 22px;
+    display: flex;
+  }
+  &-alert-icon {
+    line-height: 22px;
+    margin-right: 6px;
+  }
+  &-alert-content {
+    flex: 1;
+  }
+  &-alert-close {
+    cursor: pointer;
+    color: #9a9a9a;
+    line-height: 22px;
+  }
+  &-alert-title {
+    font-weight: 500;
+  }
+  &-alert-info {
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+    &-icon {
+      color: #05c4ff;
+    }
+  }
+  &-alert-title + &-alert-message {
+    margin-top: 6px;
+  }
+  &-alert-success {
+    background: #f6ffed;
+    border: 1px solid #b7eb8f;
+    &-icon {
+      color: #5bcb00;
+    }
+  }
+  &-alert-warning {
+    background: #fefbe6;
+    border: 1px solid #fce58f;
+    &-icon {
+      color: #ffc801;
+    }
+  }
+  &-alert-error {
+    background: #fef1f0;
+    border: 1px solid #f9a39e;
+    &-icon {
+      color: #ff483e;
+    }
+  }
+}

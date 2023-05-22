@@ -1,0 +1,119 @@
+$cellName: 'lee-step-cell-';
+.lee {
+  &-h-step-item {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+  }
+  &-h-step-cell {
+    position: relative;
+    text-align: left;
+    display: flex;
+    overflow: hidden;
+  }
+  &-h-step-content {
+    white-space: pre-line;
+    word-break: break-word;
+    flex: 1;
+  }
+  &-h-step-dot {
+    & ~ [class*='#{$cellName}']:not(:last-child) {
+      margin-bottom: 4px;
+    }
+    margin-right: 10px;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid #b2b2b2;
+    border-radius: 50%;
+    color: #b2b2b2;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+  }
+  &-h-step-line {
+    flex: 1;
+    width: 50px;
+    z-index: -1;
+    height: 1px;
+    background: #cecece;
+  }
+
+  &-step-item {
+    display: table-row;
+  }
+  &-step-cell {
+    display: table-cell;
+    position: relative;
+    padding-bottom: 20px;
+    & [class*='#{$cellName}']:not(:first-child) {
+      margin-top: 4px;
+    }
+    &-title {
+      margin-right: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    &-title-container {
+      display: flex;
+      align-items: center;
+      height: 30px;
+    }
+    &-content {
+      font-size: 14px;
+      width: 80%;
+    }
+    &-time {
+      font-size: 12px;
+      font-weight: 500;
+      color: #868686;
+    }
+  }
+  &-step-left-cell {
+    text-align: right;
+  }
+  &-step-right-cell {
+    text-align: left;
+  }
+  &-step-dot {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: white;
+    border: 2px solid #b2b2b2;
+    border-radius: 50%;
+    color: #b2b2b2;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    overflow: hidden;
+  }
+  &-process-step-dot {
+    background-color: white;
+    border: 2px solid #00a9fc;
+    color: #00a9fc;
+  }
+  &-finish-step-dot {
+    background-color: #00a9fc;
+    border: 2px solid #00a9fc;
+    color: white;
+  }
+  &-error-step-dot {
+    background-color: white;
+    border: 2px solid #f16f72;
+    color: #f16f72;
+  }
+  &-step-line {
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    width: 1px;
+    height: calc(100% - 34px);
+    transform: translateX(-50%);
+    background: #cecece;
+  }
+  &-finish-step-line {
+    background-color: #00a9fc;
+  }
+}

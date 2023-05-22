@@ -1,0 +1,25 @@
+.lee {
+  &-progress-container {
+    margin: 6px 0;
+    width: 100%;
+    display: flex;
+  }
+  &-progress-track {
+    align-self: center;
+    flex: 1;
+    height: 8px;
+    border-radius: 50px;
+    overflow: hidden;
+    background: #e3e3e3;
+  }
+  &-progress {
+    border-radius: 50px;
+    height: 100%;
+  }
+  &-percent {
+    align-self: center;
+    flex-shrink: 0;
+    margin-left: 6px;
+    justify-self: center;
+  }
+}

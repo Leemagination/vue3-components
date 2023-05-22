@@ -1,0 +1,18 @@
+.lee {
+  &-breadcrumb-item {
+    &:last-child {
+      color: #343434;
+    }
+    & a {
+      text-decoration: none;
+      color: #888888;
+      transition: color linear 0.2s;
+      &:hover {
+        color: #00a9fc;
+      }
+    }
+  }
+  &-breadcrumb-separator {
+    margin: 0 8px;
+  }
+}

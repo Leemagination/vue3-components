@@ -1,0 +1,65 @@
+$trackColor: #e8e8e8;
+$lineColor: #36a7ff;
+$dragActiveColor: #0271cb;
+.lee {
+  &-slider {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 8px 0;
+    &-track {
+      cursor: pointer;
+      height: 6px;
+      position: relative;
+      width: 100%;
+      background-color: $trackColor;
+    }
+    &-line {
+      position: absolute;
+      height: 100%;
+      background-color: $lineColor;
+    }
+    &-step {
+      position: relative;
+      &-margin {
+        margin-bottom: 30px;
+      }
+    }
+    &-drag-point {
+      user-select: none;
+      cursor: pointer;
+      position: absolute;
+      height: 12px;
+      width: 12px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      border-radius: 50%;
+      border: 2px solid $lineColor;
+      background-color: #fff;
+      &:hover {
+        border-color: $dragActiveColor;
+      }
+    }
+    &-dragging-point {
+      border-color: $dragActiveColor;
+    }
+  }
+  &-step {
+    &-text {
+      margin-top: 8px;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+    &-spot {
+      position: absolute;
+      height: 8px;
+      width: 8px;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      background-color: #fff;
+      border: 1px solid #0a7eef;
+      border-radius: 50%;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import Slider from './slider/Slider';
 import Progress from './progress/Progress';
 import Alert from './alert/Alert';
 import Input from './input/Input';
+import Radio from './radio/Radio'
 import loadBreadcrumb from './breadcrumb';
 import loadTimeline from './timeline';
 import loadSteps from './steps';
@@ -24,5 +25,6 @@ export default {
     app.component('LeeSlider', Slider);
     app.component('LeeProgress', Progress);
     app.component('LeeAlert', Alert);
+    app.component('LeeRadio', Radio);
   }
 };

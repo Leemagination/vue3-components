@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, PropType, provide, renderSlot, VNode } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './timeline.scss';
 import { getPropsValue } from '../../util';
 import {
@@ -42,15 +42,15 @@ const Timeline = defineComponent({
 });
 
 function renderHorizontal($slot: VNode) {
-  return <div class={[`${cssPrefix}-h-timeline-container`]}>{$slot}</div>;
+  return <div class={['lee-h-timeline-container']}>{$slot}</div>;
 }
 
 function renderVertical($slot: VNode) {
   return (
-    <div class={[`${cssPrefix}-timeline-container`]}>
-      <div class={[`${cssPrefix}-timeline-left-area`]}></div>
-      <div class={[`${cssPrefix}-timeline-dot-area`]}></div>
-      <div class={[`${cssPrefix}-timeline-right-area`]}></div>
+    <div class={['lee-timeline-container']}>
+      <div class={['lee-timeline-left-area']}></div>
+      <div class={['lee-timeline-dot-area']}></div>
+      <div class={['lee-timeline-right-area']}></div>
       {$slot}
     </div>
   );

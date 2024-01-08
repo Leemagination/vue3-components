@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, PropType, ref, renderSlot, Fragment } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './button.scss';
 import { buttonSize, ButtonSize, buttonType, ButtonType } from './interface';
 import Loading from '../loading/Loading';
@@ -46,7 +46,7 @@ const Button = defineComponent({
     });
 
     function handleMouseUp() {
-      const cssName = `${cssPrefix}-${btnType.value}-shadow`;
+      const cssName = `lee-${btnType.value}-shadow`;
       buttonRef.value.classList.remove(cssName);
 
       setTimeout(() => {
@@ -74,15 +74,15 @@ const Button = defineComponent({
   render() {
     const { $slots } = this;
     const slot = renderSlot($slots, 'default');
-    let btnClass = `${cssPrefix}-${this.btnType}-button`;
+    let btnClass = `lee-${this.btnType}-button`;
     if (this.isGhostType) {
-      btnClass = `${cssPrefix}-${this.btnType}${this.isGhostType ? '-ghost' : ''}-button`;
+      btnClass = `lee-${this.btnType}${this.isGhostType ? '-ghost' : ''}-button`;
     }
     if (this.isDash) {
-      btnClass = `${cssPrefix}-${this.btnType}${this.isDash ? '-dash' : ''}-button`;
+      btnClass = `lee-${this.btnType}${this.isDash ? '-dash' : ''}-button`;
     }
     if (this.disabledStatus) {
-      btnClass = `${cssPrefix}-disabled${this.isDash ? '-dash' : ''}-button`;
+      btnClass = `lee-disabled${this.isDash ? '-dash' : ''}-button`;
     }
 
     return (
@@ -91,13 +91,13 @@ const Button = defineComponent({
         onMouseup={this.handleMouseUp}
         onClick={(ev) => this.handleCLick(ev)}
         class={[
-          `${cssPrefix}-button`,
+          'lee-button',
           btnClass,
-          `${this.btnSize !== 'middle' ? `${cssPrefix}-${this.btnSize}-button` : ''}`,
-          `${this.isLoading ? `${cssPrefix}-loading-button` : ''}`
+          `${this.btnSize !== 'middle' ? `lee-${this.btnSize}-button` : ''}`,
+          `${this.isLoading ? 'lee-loading-button' : ''}`
         ]}
       >
-        <span class={[`${cssPrefix}-button-content`]}>
+        <span class={['lee-button-content']}>
           {this.isLoading ? <Loading></Loading> : null}
           <span>{slot}</span>
         </span>

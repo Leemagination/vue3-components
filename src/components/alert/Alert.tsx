@@ -2,7 +2,7 @@ import { defineComponent, h, PropType, Fragment, ref } from 'vue';
 import '/src/assets/iconfont.css';
 import './alert.scss';
 import { AlertType } from './interface';
-import { cssPrefix } from '../../config/globalConfig';
+
 const alertProps = {
   type: {
     type: String as PropType<AlertType>,
@@ -52,30 +52,30 @@ const Alert = defineComponent({
     }
     return (
       <div
-        class={[`${cssPrefix}-alert-container`, `${cssPrefix}-alert-${this.type}`]}
+        class={['lee-alert-container', `lee-alert-${this.type}`]}
         style={{ border: !this.border ? 'none' : undefined }}
       >
         {this.showIcon ? (
           <span
             class={[
               'iconfont',
-              `${cssPrefix}-alert-icon`,
+              'lee-alert-icon',
               `icon-${iconMap[this.type]}`,
-              `${cssPrefix}-alert-${this.type}-icon`
+              `lee-alert-${this.type}-icon`
             ]}
           ></span>
         ) : null}
         {contentSlot ? (
           contentSlot()
         ) : (
-          <div class={[`${cssPrefix}-alert-content`]}>
-            {this.title ? <div class={[`${cssPrefix}-alert-title`]}>{this.title}</div> : null}
-            {this.message ? <div class={[`${cssPrefix}-alert-message`]}>{this.message}</div> : null}
+          <div class={['lee-alert-content']}>
+            {this.title ? <div class={['lee-alert-title']}>{this.title}</div> : null}
+            {this.message ? <div class={['lee-alert-message']}>{this.message}</div> : null}
           </div>
         )}
         {this.closeIcon ? (
           <span
-            class={['iconfont', 'icon-close', `${cssPrefix}-alert-close`]}
+            class={['iconfont', 'icon-close', 'lee-alert-close']}
             onClick={(ev) => this.handleCloseClick(ev)}
           ></span>
         ) : null}

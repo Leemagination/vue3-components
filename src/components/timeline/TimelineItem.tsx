@@ -9,7 +9,7 @@ import {
   ExtractPropTypes,
   ComponentPublicInstance
 } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './timelineItem.scss';
 import { TimelinePosition } from './interface';
 import { stepsPosition } from '../steps/interface';
@@ -69,18 +69,15 @@ function renderVertical(
   const position = instance.validPosition;
   const color = instance.color;
   return (
-    <div class={[`${cssPrefix}-timeline-item`]}>
-      <div class={[`${cssPrefix}-timeline-cell`, `${cssPrefix}-timeline-left-cell`]}>
+    <div class={['lee-timeline-item']}>
+      <div class={['lee-timeline-cell', 'lee-timeline-left-cell']}>
         {position === 'left' ? renderCellSlot(instance) : null}
       </div>
-      <div class={[`${cssPrefix}-timeline-cell`]}>
-        <div
-          class={[`${cssPrefix}-timeline-dot`]}
-          style={{ borderColor: color ? color : undefined }}
-        ></div>
-        <div class={[`${cssPrefix}-timeline-line`]}></div>
+      <div class={['lee-timeline-cell']}>
+        <div class={['lee-timeline-dot']} style={{ borderColor: color ? color : undefined }}></div>
+        <div class={['lee-timeline-line']}></div>
       </div>
-      <div class={[`${cssPrefix}-timeline-cell`, `${cssPrefix}-timeline-right-cell`]}>
+      <div class={['lee-timeline-cell', 'lee-timeline-right-cell']}>
         {position === 'right' ? renderCellSlot(instance) : null}
       </div>
     </div>
@@ -96,11 +93,11 @@ function renderHorizontal(
   const width = instance.width;
   const color = instance.color;
   return (
-    <div class={[`${cssPrefix}-h-timeline-item`]} style={{ width: width ? width : undefined }}>
-      <div class={[`${cssPrefix}-h-timeline-cell`]}>
-        <div class={[`${cssPrefix}-h-timeline-line`]}></div>
+    <div class={['lee-h-timeline-item']} style={{ width: width ? width : undefined }}>
+      <div class={['lee-h-timeline-cell']}>
+        <div class={['lee-h-timeline-line']}></div>
         <div
-          class={[`${cssPrefix}-h-timeline-dot`]}
+          class={['lee-h-timeline-dot']}
           style={{ borderColor: color ? color : undefined }}
         ></div>
         {renderCellSlot(instance)}
@@ -122,9 +119,9 @@ function renderCellSlot(
   }
   return (
     <>
-      {cell?.title ? <p class={[`${cssPrefix}-timeline-cell-title`]}>{cell.title}</p> : null}
-      {cell?.content ? <p class={[`${cssPrefix}-timeline-cell-content`]}>{cell.content}</p> : null}
-      {cell?.time ? <p class={[`${cssPrefix}-timeline-cell-time`]}>{cell.time}</p> : null}
+      {cell?.title ? <p class={['lee-timeline-cell-title']}>{cell.title}</p> : null}
+      {cell?.content ? <p class={['lee-timeline-cell-content']}>{cell.content}</p> : null}
+      {cell?.time ? <p class={['lee-timeline-cell-time']}>{cell.time}</p> : null}
     </>
   );
 }

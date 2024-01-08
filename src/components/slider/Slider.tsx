@@ -10,7 +10,7 @@ import {
   watch
 } from 'vue';
 import './slider.scss';
-import { cssPrefix } from '../../config/globalConfig';
+
 import { StepSlot, ValidSlots } from './interface';
 const sliderProps = {
   disabled: Boolean,
@@ -212,7 +212,7 @@ const Slider = defineComponent({
     function renderStep(slots: Slots) {
       const validSlots = getValidStepSlots(slots);
       const result: ValidSlots[] = validSlots.map((item) => (
-        <div style={{ left: `${item.order}%` }} class={[`${cssPrefix}-step-text`]}>
+        <div style={{ left: `${item.order}%` }} class={['lee-step-text']}>
           {item.slot()}
         </div>
       ));
@@ -222,7 +222,7 @@ const Slider = defineComponent({
     function renderStepSpot(slots: Slots) {
       const validSlots = getValidStepSlots(slots);
       const result: ValidSlots[] = validSlots.map((item) => (
-        <div style={{ left: `${item.order}%` }} class={[`${cssPrefix}-step-spot`]}></div>
+        <div style={{ left: `${item.order}%` }} class={['lee-step-spot']}></div>
       ));
       return result.length ? result : null;
     }
@@ -244,20 +244,14 @@ const Slider = defineComponent({
     const { $slots } = this;
     const validStep = this.getValidStepSlots($slots);
     return (
-      <div
-        class={[`${cssPrefix}-slider`, validStep.length ? `${cssPrefix}-slider-step-margin` : null]}
-      >
-        <div
-          class={[`${cssPrefix}-slider-track`]}
-          ref="sliderTrack"
-          onMousedown={this.handledTrackClick}
-        >
+      <div class={['lee-slider', validStep.length ? 'lee-slider-step-margin' : null]}>
+        <div class={['lee-slider-track']} ref="sliderTrack" onMousedown={this.handledTrackClick}>
           {this.range ? (
             <div
               onMousedown={(e) => this.handleDragStart(e, 0)}
               class={[
-                `${cssPrefix}-slider-drag-point`,
-                this.dragging === 0 ? `${cssPrefix}-slider-dragging-point` : null
+                'lee-slider-drag-point',
+                this.dragging === 0 ? 'lee-slider-dragging-point' : null
               ]}
               style={{ left: `${this.lineValue[0]}%` }}
             />
@@ -265,15 +259,15 @@ const Slider = defineComponent({
           <div
             onMousedown={(e) => this.handleDragStart(e, 1)}
             class={[
-              `${cssPrefix}-slider-drag-point`,
-              this.dragging === 1 ? `${cssPrefix}-slider-dragging-point` : null
+              'lee-slider-drag-point',
+              this.dragging === 1 ? 'lee-slider-dragging-point' : null
             ]}
             style={{ left: `${this.lineValue[1]}%` }}
           />
-          <div class={[`${cssPrefix}-slider-line`]} style={{ width: lineLength, left: offset }} />
+          <div class={['lee-slider-line']} style={{ width: lineLength, left: offset }} />
           {this.renderStepSpot($slots)}
         </div>
-        <div class={[`${cssPrefix}-slider-step`]}>{this.renderStep($slots)}</div>
+        <div class={['lee-slider-step']}>{this.renderStep($slots)}</div>
       </div>
     );
   }

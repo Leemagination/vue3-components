@@ -11,7 +11,7 @@ import {
   watch
 } from 'vue';
 import './input.scss';
-import { cssPrefix } from '../../config/globalConfig';
+
 const inputProps = {
   value: {
     type: String,
@@ -98,7 +98,7 @@ function renderAddon(
   instance: ComponentPublicInstance<ExtractPropTypes<typeof inputProps>, ReturnType<typeof setup>>
 ) {
   return (
-    <div class={`${cssPrefix}-input-container`}>
+    <div class={'lee-input-container'}>
       {renderAddonBefore(instance)}
       {renderNormal(instance)}
       {renderAddonAfter(instance)}
@@ -115,7 +115,7 @@ function renderClearIcon(
         onClick={() => {
           instance.clearEvent();
         }}
-        class={`${cssPrefix}-input-clear`}
+        class={'lee-input-clear'}
       >
         +
       </span>
@@ -129,7 +129,7 @@ function renderCount(
 ) {
   if (instance.showCount) {
     return (
-      <span class={`${cssPrefix}-input-count`}>
+      <span class={'lee-input-count'}>
         {`${instance.textLength}${instance.limit ? `/${instance.limit}` : ''}`}
       </span>
     );
@@ -145,7 +145,7 @@ function renderAddonBefore(
     return null;
   }
   return (
-    <span class={`${cssPrefix}-input-addon ${cssPrefix}-addon-before`}>
+    <span class={'lee-input-addon lee-addon-before'}>
       {$slots.addonBefore ? $slots.addonBefore() : instance.addonBefore}
     </span>
   );
@@ -159,7 +159,7 @@ function renderAddonAfter(
     return null;
   }
   return (
-    <span class={`${cssPrefix}-input-addon ${cssPrefix}-addon-after`}>
+    <span class={'lee-input-addon lee-addon-after'}>
       {$slots.addonAfter ? $slots.addonAfter() : instance.addonAfter}
     </span>
   );
@@ -171,10 +171,10 @@ function renderNormal(
   return (
     <div
       class={[
-        `${cssPrefix}-input`,
-        instance.bordered ? '' : `${cssPrefix}-input-no-border`,
-        instance.disabled ? `${cssPrefix}-input-disabled` : '',
-        instance.isActive && !instance.disabled ? `${cssPrefix}-input-active` : ''
+        'lee-input',
+        instance.bordered ? '' : 'lee-input-no-border',
+        instance.disabled ? 'lee-input-disabled' : '',
+        instance.isActive && !instance.disabled ? 'lee-input-active' : ''
       ]}
     >
       {renderPrefix(instance)}
@@ -194,7 +194,7 @@ function renderPrefix(
     return $slots.prefix();
   }
   if (instance.prefix) {
-    return <span class={`${cssPrefix}-fix-text ${cssPrefix}-input-prefix`}>{instance.prefix}</span>;
+    return <span class={'lee-fix-text lee-input-prefix'}>{instance.prefix}</span>;
   }
   return null;
 }
@@ -207,7 +207,7 @@ function renderSuffix(
     return $slots.suffix();
   }
   if (instance.suffix) {
-    return <span class={`${cssPrefix}-fix-text ${cssPrefix}-input-suffix`}>{instance.suffix}</span>;
+    return <span class={'lee-fix-text lee-input-suffix'}>{instance.suffix}</span>;
   }
   return null;
 }

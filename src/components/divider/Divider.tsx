@@ -9,7 +9,7 @@ import {
   LineAlign,
   lineAlignMap
 } from './interface';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './divider.scss';
 import { getPropsValue } from '../../util';
 const dividerProps = {
@@ -149,21 +149,21 @@ const Divider = defineComponent({
       customLineStyle.lineHeight = `${this.verticalHeight}`;
     }
     return (
-      <div class={[`${cssPrefix}-${this.direction}-divider`]} style={customDividerStyle}>
+      <div class={[`lee-${this.direction}-divider`]} style={customDividerStyle}>
         {slot.children?.length ? (
           <>
             <div
-              class={[`${cssPrefix}-${this.direction}-divider-left-line`]}
+              class={[`lee-${this.direction}-divider-left-line`]}
               style={this.lineProportion.left}
             ></div>
-            <div class={[`${cssPrefix}-divider-title`]}>{slot}</div>
+            <div class={['lee-divider-title']}>{slot}</div>
             <div
-              class={[`${cssPrefix}-${this.direction}-divider-right-line`]}
+              class={[`lee-${this.direction}-divider-right-line`]}
               style={this.lineProportion.right}
             ></div>
           </>
         ) : (
-          <div class={[`${cssPrefix}-${this.direction}-divider-line`]} style={customLineStyle}>
+          <div class={[`lee-${this.direction}-divider-line`]} style={customLineStyle}>
             &nbsp;
           </div>
         )}

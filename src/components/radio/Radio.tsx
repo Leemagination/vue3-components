@@ -11,7 +11,7 @@ import {
   onBeforeMount,
   watch
 } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './radio.scss';
 
 const nameMap: { [p: string]: { ref: Ref<boolean>; value: string | number | undefined }[] } = {};
@@ -92,15 +92,13 @@ const Radio = defineComponent({
     const slot = renderSlot($slots, 'default');
     return (
       <div
-        class={[`${cssPrefix}-radio`, this.disabled ? `${cssPrefix}-radio-disabled` : '']}
+        class={['lee-radio', this.disabled ? 'lee-radio-disabled' : '']}
         onClick={(ev) => {
           this.handleClick(ev);
         }}
       >
-        <span
-          class={[`${cssPrefix}-radio-point`, this.checkStatus ? `${cssPrefix}-radio-checked` : '']}
-        ></span>
-        <span class={[`${cssPrefix}-radio-label`]}>{slot}</span>
+        <span class={['lee-radio-point', this.checkStatus ? 'lee-radio-checked' : '']}></span>
+        <span class={['lee-radio-label']}>{slot}</span>
       </div>
     );
   }

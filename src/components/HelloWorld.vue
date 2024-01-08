@@ -39,7 +39,7 @@
 
   <button
     type="button"
-    @click="myClick"
+    @click="myTest"
   >
     count is: {{ count }}
   </button>
@@ -47,12 +47,48 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
-  <div>{{ sliderValue }}</div>
   <br>
+  <lee-radio
+    name="biubiubiu"
+    :value="12"
+  >
+    124
+  </lee-radio>
+  <lee-radio
+    v-model:checked="password"
+    :value="22"
+    name="biubiubiu"
+    :disabled="true"
+    @change="myTest"
+  >
+    test
+  </lee-radio>
+  <lee-radio
+    name="biubiubiu1"
+    :value="1"
+  >
+    124
+  </lee-radio>
+  <lee-radio name="biubiubiu1">
+    124124
+  </lee-radio>
+  <lee-radio name="biubiubiu1">
+    343
+  </lee-radio>
+  <lee-radio
+    name="biubiubiu"
+  >
+    1
+  </lee-radio>
+  <lee-radio
+    name="biubiubiu"
+  >
+    3
+  </lee-radio>
 </template>
 
 <script lang="ts">
-import {ref, defineComponent} from 'vue';
+import { ref, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'HelloWorld',
@@ -65,21 +101,19 @@ export default defineComponent({
   setup: () => {
     const count = ref(0);
     const myInput = ref('abc')
-    const password = ref(false)
+    const password = ref(true)
     return {
       count,
       myInput,
       password
     };
   },
+  mounted() {
+  },
   methods: {
-    myTest(e:Event) {
-      console.log(e);
-      console.log(this.myInput);
-    },
-    myClick(){
+    myTest() {
       this.password = !this.password
-    }
+    },
   }
 });
 </script>

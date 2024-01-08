@@ -12,7 +12,7 @@ import {
   CSSProperties
 } from 'vue';
 import './textarea.scss';
-import { cssPrefix } from '../../config/globalConfig';
+
 import { AutoSize } from './interface';
 const inputProps = {
   value: {
@@ -106,7 +106,7 @@ const Textarea = defineComponent({
   setup,
   render() {
     return (
-      <div class={`${cssPrefix}-textarea`}>
+      <div class={'lee-textarea'}>
         {renderTextarea(this)}
         {renderClearIcon(this)}
         {renderCount(this)}
@@ -124,7 +124,7 @@ function renderClearIcon(
         onClick={() => {
           instance.clearEvent();
         }}
-        class={`${cssPrefix}-textarea-clear`}
+        class={'lee-textarea-clear'}
       >
         +
       </span>
@@ -138,7 +138,7 @@ function renderCount(
 ) {
   if (instance.showCount) {
     return (
-      <span class={`${cssPrefix}-textarea-count`}>
+      <span class={'lee-textarea-count'}>
         {`${instance.textLength}${instance.limit ? `/${instance.limit}` : ''}`}
       </span>
     );
@@ -152,11 +152,11 @@ function renderTextarea(
   return (
     <textarea
       class={[
-        instance.bordered ? '' : `${cssPrefix}-textarea-no-border`,
-        instance.disabled ? `${cssPrefix}-textarea-disabled` : '',
-        instance.isActive && !instance.disabled ? `${cssPrefix}-textarea-active` : '',
-        instance.showCount ? `${cssPrefix}-textarea-count-margin` : '',
-        instance.showClear ? `${cssPrefix}-textarea-clear-padding` : ''
+        instance.bordered ? '' : 'lee-textarea-no-border',
+        instance.disabled ? 'lee-textarea-disabled' : '',
+        instance.isActive && !instance.disabled ? 'lee-textarea-active' : '',
+        instance.showCount ? 'lee-textarea-count-margin' : '',
+        instance.showClear ? 'lee-textarea-clear-padding' : ''
       ]}
       style={instance.autoSizeStyle}
       ref="inputRef"

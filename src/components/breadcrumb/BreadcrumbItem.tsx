@@ -1,5 +1,5 @@
 import { defineComponent, h, PropType } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './breadcrumbItem.scss';
 import { MouseFunc } from '../../config/interface';
 const BreadcrumbItem = defineComponent({
@@ -23,7 +23,7 @@ const BreadcrumbItem = defineComponent({
   render() {
     const { $slots } = this;
     return (
-      <span class={[`${cssPrefix}-breadcrumb-item`]} onClick={(e) => this.handleCLick(e)}>
+      <span class={['lee-breadcrumb-item']} onClick={(e) => this.handleCLick(e)}>
         {this.href === null ? $slots : <a href={this.href}>{$slots}</a>}
       </span>
     );

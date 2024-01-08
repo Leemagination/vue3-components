@@ -1,5 +1,5 @@
 import { computed, defineComponent, h } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './loading.scss';
 const loadingProps = {
   radius: {
@@ -50,7 +50,7 @@ const LoadingSvg = defineComponent({
       <svg
         width={this.canvasWidth}
         height={this.canvasWidth}
-        class={[`${cssPrefix}-loading-svg`]}
+        class={['lee-loading-svg']}
         style={{ animationDuration: `${this.speed}s` }}
       >
         <path

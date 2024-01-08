@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, PropType, ref, watch } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './switch.scss';
 import Loading from '../loading/Loading';
 import { MouseFunc } from '../../config/interface';
@@ -62,15 +62,15 @@ const Switch = defineComponent({
       <div
         onClick={this.handleClick}
         class={[
-          `${cssPrefix}-switch`,
-          this.disabled || this.loading ? `${cssPrefix}-disabled-switch` : null,
-          `${cssPrefix}-${this.switchValueRef ? 'active' : 'close'}-switch`
+          'lee-switch',
+          this.disabled || this.loading ? 'lee-disabled-switch' : null,
+          `lee-${this.switchValueRef ? 'active' : 'close'}-switch`
         ]}
       >
-        <span class={[`${cssPrefix}-switch-text`]}>
+        <span class={['lee-switch-text']}>
           {this.switchValueRef ? this.activeText : this.closeText}
         </span>
-        <div class={[`${cssPrefix}-switch-control`]}>
+        <div class={['lee-switch-control']}>
           {this.loading ? (
             <Loading style={{ position: 'absolute', left: '1px', top: '1px' }}></Loading>
           ) : null}

@@ -1,7 +1,7 @@
 import { computed, defineComponent, h, PropType } from 'vue';
 import './progress.scss';
 import { ColorConfig, ProgressStatus, ProgressType } from './interface';
-import { cssPrefix } from '../../config/globalConfig';
+
 const progressProps = {
   type: {
     type: String as PropType<ProgressType>,
@@ -119,10 +119,10 @@ const Progress = defineComponent({
       );
     }
     return (
-      <div class={[`${cssPrefix}-progress-container`]}>
-        <div class={[`${cssPrefix}-progress-track`]} style={{ height: `${this.validWidth}px` }}>
+      <div class={['lee-progress-container']}>
+        <div class={['lee-progress-track']} style={{ height: `${this.validWidth}px` }}>
           <div
-            class={[`${cssPrefix}-progress`]}
+            class={['lee-progress']}
             style={{
               width: `${this.validPercent}%`,
               background: `${this.progressColor}`,
@@ -131,7 +131,7 @@ const Progress = defineComponent({
           ></div>
         </div>
         {this.showValue ? (
-          <div class={[`${cssPrefix}-percent`]} style={{ fontSize: `${this.valueSize}px` }}>
+          <div class={['lee-percent']} style={{ fontSize: `${this.valueSize}px` }}>
             {this.validPercent}%
           </div>
         ) : null}

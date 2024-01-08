@@ -7,7 +7,7 @@ import {
   provide,
   renderSlot
 } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './steps.scss';
 import { getPropsValue } from '../../util';
 import { StepsDirection, stepsDirection, StepsPosition, stepsPosition } from './interface';
@@ -50,16 +50,16 @@ const Steps = defineComponent({
 
 function renderHorizontal(instance: ComponentPublicInstance) {
   const slots = handleSlot(instance);
-  return <div class={[`${cssPrefix}-h-steps-container`]}>{slots}</div>;
+  return <div class={['lee-h-steps-container']}>{slots}</div>;
 }
 
 function renderVertical(instance: ComponentPublicInstance) {
   const slots = handleSlot(instance);
   return (
-    <div class={[`${cssPrefix}-steps-container`]}>
-      <div class={[`${cssPrefix}-steps-left-area`]}></div>
-      <div class={[`${cssPrefix}-steps-dot-area`]}></div>
-      <div class={[`${cssPrefix}-steps-right-area`]}></div>
+    <div class={['lee-steps-container']}>
+      <div class={['lee-steps-left-area']}></div>
+      <div class={['lee-steps-dot-area']}></div>
+      <div class={['lee-steps-right-area']}></div>
       {slots}
     </div>
   );

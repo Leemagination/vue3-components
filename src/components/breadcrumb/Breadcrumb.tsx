@@ -1,5 +1,5 @@
 import { defineComponent, h, renderSlot, VNodeChild } from 'vue';
-import { cssPrefix } from '../../config/globalConfig';
+
 import './breadcrumb.scss';
 const Breadcrumb = defineComponent({
   name: 'Breadcrumb',
@@ -12,7 +12,7 @@ const Breadcrumb = defineComponent({
         if (item.type.name === 'BreadcrumbItem') {
           validChildren.push(item);
           validChildren.push(
-            <span class={[`${cssPrefix}-breadcrumb-separator`]}>
+            <span class={['lee-breadcrumb-separator']}>
               {this.$slots.separator ? separator : '/'}
             </span>
           );
@@ -20,7 +20,7 @@ const Breadcrumb = defineComponent({
       });
       slot.children = validChildren.slice(0, -1);
     }
-    return <div class={[`${cssPrefix}-breadcrumb`]}>{slot}</div>;
+    return <div class={['lee-breadcrumb']}>{slot}</div>;
   }
 });
 export default Breadcrumb;

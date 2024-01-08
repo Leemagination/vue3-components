@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, PropType, ref, renderSlot, watch } from 'vue';
 import './tag.scss';
-import { cssPrefix } from '../../config/globalConfig';
+
 import { MouseFunc } from '../../config/interface';
 import { CustomColor, tagType, TagType } from './interface';
 import { getPropsValue } from '../../util';
@@ -64,7 +64,7 @@ const Tag = defineComponent({
     const renderCloseIcon = () => {
       if (!this.closable) return null;
       return (
-        <div class={`${cssPrefix}-tag-close-icon`} onClick={this.handleCloseClick}>
+        <div class={'lee-tag-close-icon'} onClick={this.handleCloseClick}>
           X
         </div>
       );
@@ -74,9 +74,9 @@ const Tag = defineComponent({
         onClick={this.handleClick}
         style={this.customColor}
         class={[
-          `${cssPrefix}-tag`,
-          !this.selectMode && this.type !== 'default' ? `${cssPrefix}-${this.type}-tag` : null,
-          this.selectMode ? `${cssPrefix}-${this.checkedValue ? 'checked' : 'uncheck'}-tag` : null
+          'lee-tag',
+          !this.selectMode && this.type !== 'default' ? `lee-${this.type}-tag` : null,
+          this.selectMode ? `lee-${this.checkedValue ? 'checked' : 'uncheck'}-tag` : null
         ]}
       >
         {slot}

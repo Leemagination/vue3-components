@@ -1,0 +1,40 @@
+.lee-collapse {
+  display: block;
+  text-align: left;
+}
+
+.lee-collapse-item {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  &:not(:first-child) {
+    border-top: 1px solid rgb(239, 239, 245);
+  }
+  .lee-collapse-item-title {
+    cursor: pointer;
+    display: flex;
+    align-content: center;
+    .arrow-svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.lee-collapse-item-expanded {
+  .arrow-svg {
+    transform: rotate(90deg);
+  }
+}
+
+.lee-collapse-item-main {
+}
+.lee-collapse-item-content {
+  padding-top: 10px;
+}
+
+.lee-collapse-transition-enter-active,
+.lee-collapse-transition-leave-active {
+  transition: all 0.3s ease;
+}

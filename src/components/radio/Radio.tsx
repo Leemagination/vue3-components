@@ -5,14 +5,16 @@ import {
   h,
   Fragment,
   ref,
-  PropType,
   renderSlot,
   Ref,
   onBeforeMount,
-  watch
+  watch,
+  inject,
+  computed
 } from 'vue';
 
 import './radio.scss';
+import { RadioGroupProvideType } from './interface';
 
 const nameMap: { [p: string]: { ref: Ref<boolean>; value: string | number | undefined }[] } = {};
 
@@ -25,8 +27,10 @@ const radioProps = {
 };
 
 const setup = (props: ExtractPropTypes<typeof radioProps>, context: SetupContext) => {
+  const config = inject<RadioGroupProvideType>('radioGroupProvideKey');
+
   const checkStatus = ref(false);
-  const radioName = props.name || 'lee-radio';
+  const radioName = config?.groupName.value || props.name || 'lee-radio';
 
   if (nameMap[radioName]) {
     nameMap[radioName].push({
@@ -68,9 +72,16 @@ const setup = (props: ExtractPropTypes<typeof radioProps>, context: SetupContext
     });
     checkStatus.value = true;
     context.emit('change', props.value);
+    if (config?.updateGroupValue) {
+      config.updateGroupValue(props.value);
+    }
   }
+
+  const disabledStatus = computed(() => {
+    return props.disabled || config?.disabledStatus.value;
+  });
   function handleClick(e: MouseEvent): void {
-    if (props.disabled) {
+    if (disabledStatus.value) {
       return;
     }
     changeRadioStatus();
@@ -78,7 +89,8 @@ const setup = (props: ExtractPropTypes<typeof radioProps>, context: SetupContext
 
   return {
     checkStatus,
-    handleClick
+    handleClick,
+    disabledStatus
   };
 };
 
@@ -92,7 +104,7 @@ const Radio = defineComponent({
     const slot = renderSlot($slots, 'default');
     return (
       <div
-        class={['lee-radio', this.disabled ? 'lee-radio-disabled' : '']}
+        class={['lee-radio', this.disabledStatus ? 'lee-radio-disabled' : '']}
         onClick={(ev) => {
           this.handleClick(ev);
         }}

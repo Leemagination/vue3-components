@@ -6,13 +6,12 @@ import Tag from './tag/Tag';
 import Slider from './slider/Slider';
 import Progress from './progress/Progress';
 import Alert from './alert/Alert';
-import Input from './input/Input';
-import Radio from './radio/Radio';
 import loadBreadcrumb from './breadcrumb';
 import loadTimeline from './timeline';
 import loadSteps from './steps';
 import loadInput from './input';
 import loadCollapse from './collapse';
+import loadRadio from './radio';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -21,12 +20,12 @@ export default {
     loadSteps(app);
     loadInput(app);
     loadCollapse(app);
+    loadRadio(app);
     app.component('LeeDivider', Divider);
     app.component('LeeSwitch', Switch);
     app.component('LeeTag', Tag);
     app.component('LeeSlider', Slider);
     app.component('LeeProgress', Progress);
     app.component('LeeAlert', Alert);
-    app.component('LeeRadio', Radio);
   }
 };

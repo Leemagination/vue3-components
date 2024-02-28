@@ -12,6 +12,7 @@ import loadSteps from './steps';
 import loadInput from './input';
 import loadCollapse from './collapse';
 import loadRadio from './radio';
+import BackTop from './backTop/BackTop';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -27,5 +28,6 @@ export default {
     app.component('LeeSlider', Slider);
     app.component('LeeProgress', Progress);
     app.component('LeeAlert', Alert);
+    app.component('LeeBackTop', BackTop);
   }
 };

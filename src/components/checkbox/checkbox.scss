@@ -1,0 +1,54 @@
+$checkedColor: #1a85ff;
+$disabledCheckedColor: #1a85ff;
+$disabledBorderColor: rgb(224, 224, 230);
+$disabledBgColor: rgb(250, 250, 252);
+.lee-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lee-checkbox-point {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #e3e3e3;
+  transition: all ease-in 0.2s;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  &:hover {
+    border: 1px solid $checkedColor;
+  }
+}
+
+.lee-checkbox-checked {
+  border: 1px solid $checkedColor;
+  background: $checkedColor;
+  .check-icon {
+    color: #fff;
+  }
+}
+
+.lee-checkbox-label {
+  margin: 0 6px;
+  vertical-align: middle;
+  white-space: pre;
+}
+
+.lee-checkbox-disabled {
+  cursor: not-allowed;
+  .lee-checkbox-point {
+    background: $disabledBgColor;
+    &:hover {
+      border: 1px solid #e3e3e3;
+    }
+  }
+  .lee-checkbox-checked {
+    box-shadow: inset 0 0 0 1px $disabledBorderColor;
+    &::before {
+      background: $disabledBorderColor;
+    }
+  }
+}

@@ -12,6 +12,7 @@ import loadSteps from './steps';
 import loadInput from './input';
 import loadCollapse from './collapse';
 import loadRadio from './radio';
+import loadCheckbox from './checkbox';
 import BackTop from './backTop/BackTop';
 export default {
   install: (app: App) => {
@@ -22,6 +23,7 @@ export default {
     loadInput(app);
     loadCollapse(app);
     loadRadio(app);
+    loadCheckbox(app);
     app.component('LeeDivider', Divider);
     app.component('LeeSwitch', Switch);
     app.component('LeeTag', Tag);

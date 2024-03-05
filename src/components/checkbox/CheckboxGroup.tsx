@@ -1,6 +1,7 @@
 import {
   computed,
   defineComponent,
+  defineEmit,
   ExtractPropTypes,
   h,
   PropType,
@@ -25,7 +26,7 @@ const setup = (props: ExtractPropTypes<typeof checkboxGroupProps>, context: Setu
     () => props.value,
     (val) => {
       if (Array.isArray(val)) {
-        checkGroupValue.value = val;
+        checkGroupValue.value = [...val];
       }
     },
     {

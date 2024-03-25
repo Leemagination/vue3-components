@@ -6,6 +6,7 @@
     "strict": true,
     "jsx": "preserve",
     "jsxFactory": "h",
+    "jsxImportSource": "vue",
     "jsxFragmentFactory": "Fragment",
     "sourceMap": true,
     "resolveJsonModule": true,

@@ -14,6 +14,7 @@ import loadCollapse from './collapse';
 import loadRadio from './radio';
 import loadCheckbox from './checkbox';
 import BackTop from './backTop/BackTop';
+import Card from './card/Card';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -31,5 +32,6 @@ export default {
     app.component('LeeProgress', Progress);
     app.component('LeeAlert', Alert);
     app.component('LeeBackTop', BackTop);
+    app.component('LeeCard', Card);
   }
 };

@@ -1,0 +1,49 @@
+$borderColor: rgb(239, 239, 245);
+
+.lee-list-container {
+  &__header {
+    padding: 12px 0;
+    border-bottom: 1px solid $borderColor;
+  }
+  &__footer {
+    padding: 12px 0;
+    border-top: 1px solid $borderColor;
+  }
+  .lee-list-wrapper {
+    .lee-list-item {
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__main {
+        flex: 1;
+      }
+      &__prefix {
+        margin-right: 12px;
+      }
+      &__suffix {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  &--split {
+    .lee-list-item:not(:last-child){
+      border-bottom: 1px solid $borderColor;
+    }
+  }
+  &--bordered {
+    border: 1px solid $borderColor;
+    .lee-list-wrapper {
+      .lee-list-item {
+        padding: 12px 20px;
+      }
+    }
+  }
+  &--hover {
+    .lee-list-item:hover {
+      background: rgba(89, 89, 89, 0.05);
+      transition: background-color 0.2s ease;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+$iconDefaultColor: #c5c5c5;
+$iconActiveColor: #ffb838;
+
+.lee-rate {
+  display: inline-block;
+  color: $iconDefaultColor;
+  .lee-rate-item {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    &--readonly {
+      pointer-events: none;
+      cursor: default;
+    }
+    &--active {
+      color: $iconActiveColor;
+    }
+    &__full,
+    &__half {
+      display: inline-block;
+      transition: color ease 0.2s;
+    }
+    &__half {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+  .lee-rate-icon {
+    display: inline-block;
+  }
+}

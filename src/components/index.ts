@@ -15,6 +15,8 @@ import loadRadio from './radio';
 import loadCheckbox from './checkbox';
 import BackTop from './backTop/BackTop';
 import Card from './card/Card';
+import Rate from './rate/Rate';
+import loadList from './list/index';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -25,6 +27,7 @@ export default {
     loadCollapse(app);
     loadRadio(app);
     loadCheckbox(app);
+    loadList(app);
     app.component('LeeDivider', Divider);
     app.component('LeeSwitch', Switch);
     app.component('LeeTag', Tag);
@@ -33,5 +36,6 @@ export default {
     app.component('LeeAlert', Alert);
     app.component('LeeBackTop', BackTop);
     app.component('LeeCard', Card);
+    app.component('LeeRate', Rate);
   }
 };

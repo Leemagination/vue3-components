@@ -9,11 +9,12 @@ import {
   SetupContext,
   computed,
   PropType,
-  CSSProperties
+  CSSProperties,
+  watch
 } from 'vue';
 import './textarea.scss';
 
-import { AutoSize } from './interface';
+import { AutoSize, InputEmit } from './interface';
 const inputProps = {
   value: {
     type: String,
@@ -37,14 +38,27 @@ const inputProps = {
   }
 };
 
-const setup = (props: ExtractPropTypes<typeof inputProps>, context: SetupContext) => {
+const setup = (
+  props: ExtractPropTypes<typeof inputProps>,
+  context: SetupContext<Array<InputEmit>>
+) => {
   const isActive = ref(false);
   const inputRef = ref();
   const textLength = ref(0);
-  onMounted(() => {
+  function setPropValue() {
     inputRef.value.value = props.value;
     textLength.value = props.value.length;
+  }
+
+  onMounted(() => {
+    setPropValue();
   });
+  watch(
+    () => props.value,
+    () => {
+      setPropValue();
+    }
+  );
   const autoSizeStyle = computed(() => {
     if (!props.autoSize) {
       return undefined;
@@ -102,7 +116,6 @@ const setup = (props: ExtractPropTypes<typeof inputProps>, context: SetupContext
 const Textarea = defineComponent({
   name: 'Textarea',
   props: inputProps,
-  emits: ['update:value', 'change', 'input', 'focus', 'blur'],
   setup,
   render() {
     return (

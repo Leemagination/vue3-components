@@ -11,6 +11,7 @@ import {
   watch
 } from 'vue';
 import './input.scss';
+import { InputEmit } from './interface';
 
 const inputProps = {
   value: {
@@ -36,14 +37,28 @@ const inputProps = {
   }
 };
 
-const setup = (props: ExtractPropTypes<typeof inputProps>, context: SetupContext) => {
+const setup = (
+  props: ExtractPropTypes<typeof inputProps>,
+  context: SetupContext<Array<InputEmit>>
+) => {
   const isActive = ref(false);
   const inputRef = ref();
   const textLength = ref(0);
-  onMounted(() => {
+
+  function setPropValue() {
     inputRef.value.value = props.value;
     textLength.value = props.value.length;
+  }
+
+  onMounted(() => {
+    setPropValue();
   });
+  watch(
+    () => props.value,
+    () => {
+      setPropValue();
+    }
+  );
   const addonType = computed(() => {
     const { slots } = context;
     return props.addonBefore || props.addonAfter || slots.addonBefore || slots.addonAfter;
@@ -84,7 +99,6 @@ const setup = (props: ExtractPropTypes<typeof inputProps>, context: SetupContext
 const Input = defineComponent({
   name: 'Input',
   props: inputProps,
-  emits: ['update:value', 'change', 'input', 'focus', 'blur'],
   setup,
   render() {
     if (this.addonType) {

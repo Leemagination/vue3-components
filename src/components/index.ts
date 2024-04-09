@@ -17,6 +17,7 @@ import BackTop from './backTop/BackTop';
 import Card from './card/Card';
 import Rate from './rate/Rate';
 import loadList from './list/index';
+import loadInputNumber from './inputNumber/index';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -28,6 +29,7 @@ export default {
     loadRadio(app);
     loadCheckbox(app);
     loadList(app);
+    loadInputNumber(app);
     app.component('LeeDivider', Divider);
     app.component('LeeSwitch', Switch);
     app.component('LeeTag', Tag);

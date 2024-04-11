@@ -49,8 +49,10 @@ $normalBorder: 1px solid #c5c5c5;
 }
 
 .lee-input-clear {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  box-sizing: border-box;
   line-height: 14px;
   font-size: 12px;
   border-radius: 50%;
@@ -60,7 +62,6 @@ $normalBorder: 1px solid #c5c5c5;
   font-weight: bold;
   vertical-align: middle;
   transition: background-color 0.1s linear;
-  transform: rotate(45deg);
   margin: 0 6px;
   &:hover {
     background-color: #b0b0b0;

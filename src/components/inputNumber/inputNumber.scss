@@ -1,7 +1,7 @@
 $activeBorder: 1px solid #1a85ff;
 $normalBorder: 1px solid #c5c5c5;
 
-.lee-input {
+.lee-input-number {
   box-sizing: border-box;
   border-radius: 2px;
   display: inline-flex;
@@ -30,27 +30,29 @@ $normalBorder: 1px solid #c5c5c5;
       letter-spacing: unset;
     }
   }
-  &:not(.lee-input-disabled):not(.lee-input-no-border):hover {
+  &:not(.lee-input-number-disabled):not(.lee-input-number-no-border):hover {
     border: $activeBorder;
   }
-  &.lee-input-active:not(.lee-input-no-border) {
+  &.lee-input-number-active:not(.lee-input-number-no-border) {
     border: $activeBorder;
     box-shadow: 0 0 2px 2px rgba(26, 133, 255, 0.15);
   }
-  &.lee-input-disabled {
+  &.lee-input-number-disabled {
     background-color: rgb(250, 250, 250);
     color: rgba(0, 0, 0, 0.4);
   }
 }
 
-.lee-input-count {
+.lee-input-number-count {
   color: #626262;
   margin-left: 6px;
 }
 
-.lee-input-clear {
-  width: 14px;
-  height: 14px;
+.lee-input-number-clear {
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  box-sizing: border-box;
   line-height: 14px;
   font-size: 12px;
   border-radius: 50%;
@@ -60,33 +62,43 @@ $normalBorder: 1px solid #c5c5c5;
   font-weight: bold;
   vertical-align: middle;
   transition: background-color 0.1s linear;
-  transform: rotate(45deg);
   margin: 0 6px;
+
   &:hover {
     background-color: #b0b0b0;
   }
 }
 
-.lee-input-no-border {
+.lee-input-number-step-control {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  & > svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.lee-input-number-no-border {
   border: none;
 }
 
 .lee-fix-text {
   color: initial;
 }
-.lee-input-prefix {
+.lee-input-number-prefix {
   margin-right: 4px;
 }
-.lee-input-suffix {
+.lee-input-number-suffix {
   margin-left: 4px;
 }
 
-.lee-input-container {
+.lee-input-number-container {
   font-size: 14px;
-  .lee-input {
+  .lee-input-number {
     border-radius: 0;
   }
-  .lee-input-addon {
+  .lee-input-number-addon {
     padding: 4px 6px;
     box-sizing: border-box;
     border: $normalBorder;

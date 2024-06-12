@@ -10,22 +10,69 @@ import {
   ref,
   Teleport,
   watch,
-  nextTick,
-  computed
+  computed,
+  PropType,
+  Transition
 } from 'vue';
 import './popover.scss';
-import { arrow, flip, offset, shift, useFloating } from '@floating-ui/vue';
+import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
 import { createZIndex } from '../../util/zIndex';
+import { placementPropList, triggerPropList, TriggerType } from './interface';
+import { getPropsValue } from '../../util';
 
-const popoverProps = {};
+const popoverProps = {
+  placement: {
+    type: String as PropType<Placement>,
+    default: 'top'
+  },
+  disabled: Boolean,
+  showArrow: {
+    type: Boolean,
+    default: true
+  },
+  trigger: {
+    type: String as PropType<TriggerType>,
+    default: 'click'
+  },
+  popoverOnHover: {
+    type: Boolean,
+    default: true
+  }
+};
 
 const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
   const popoverVisible = ref(false);
+  const transitionVisible = ref(false);
+  let transitionTimer: number | undefined = undefined;
   const zIndex = ref(createZIndex());
-  function handlePopoverVisible() {
-    popoverVisible.value = !popoverVisible.value;
+
+  const placementValue = computed(() => {
+    return getPropsValue(props.placement, placementPropList);
+  });
+
+  const triggerValue = computed(() => {
+    return getPropsValue(props.trigger, triggerPropList);
+  });
+
+  function handlePopoverVisible(visible?: boolean) {
+    if (props.disabled) {
+      return;
+    }
+    popoverVisible.value = typeof visible === 'boolean' ? visible : !popoverVisible.value;
+    clearTimeout(transitionTimer);
     if (popoverVisible.value) {
       zIndex.value = createZIndex(zIndex.value);
+      transitionVisible.value = true;
+    } else {
+      transitionTimer = setTimeout(() => {
+        transitionVisible.value = false;
+      }, 100);
+    }
+  }
+
+  function mouseEventHandler(visible: boolean) {
+    if (triggerValue.value === 'hover') {
+      handlePopoverVisible(visible);
     }
   }
 
@@ -38,7 +85,8 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
     floatRef,
     {
       transform: false,
-      placement: 'bottom',
+      placement: placementValue.value,
+      whileElementsMounted: autoUpdate,
       middleware: [offset(10), flip(), shift(), arrow({ element: floatingArrowRef })]
     }
   );
@@ -111,14 +159,18 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
     targetRef,
     floatRef,
     popoverVisible,
+    transitionVisible,
     popoverStyle,
     floatingStyles,
     floatArrowStyle,
-    handlePopoverVisible
+    triggerValue,
+    handlePopoverVisible,
+    mouseEventHandler
   };
 };
 const Popover = defineComponent({
   name: 'Popover',
+  props: popoverProps,
   setup,
   render(
     instance: ComponentPublicInstance<
@@ -135,35 +187,71 @@ const Popover = defineComponent({
         if (!targetSlot?.props) {
           targetSlot.props = {};
         }
-        if (targetSlot?.props?.onClick) {
-          const originalHandler = targetSlot.props.onClick;
-          targetSlot.props.onClick = (...args: unknown[]) => {
-            originalHandler(...args);
-            this.handlePopoverVisible();
-          };
-        } else {
-          targetSlot.props.onClick = () => {
-            this.handlePopoverVisible();
-          };
+        if (this.triggerValue === 'click') {
+          if (targetSlot?.props?.onClick) {
+            const originalHandler = targetSlot.props.onClick;
+            targetSlot.props.onClick = (...args: unknown[]) => {
+              originalHandler(...args);
+              this.handlePopoverVisible();
+            };
+          } else {
+            targetSlot.props.onClick = () => {
+              this.handlePopoverVisible();
+            };
+          }
+        }
+        if (this.triggerValue === 'hover') {
+          const originalMouseEnterHandler = targetSlot.props.onMouseenter;
+          const originalMouseLeaveHandler = targetSlot.props.onMouseleave;
+          if (originalMouseEnterHandler) {
+            targetSlot.props.onMouseenter = (...args: unknown[]) => {
+              originalMouseEnterHandler(...args);
+              this.handlePopoverVisible(true);
+            };
+          } else {
+            targetSlot.props.onMouseenter = () => {
+              this.handlePopoverVisible(true);
+            };
+          }
+          if (originalMouseLeaveHandler) {
+            targetSlot.props.onMouseleave = (...args: unknown[]) => {
+              originalMouseLeaveHandler(...args);
+              this.handlePopoverVisible(false);
+            };
+          } else {
+            targetSlot.props.onMouseleave = () => {
+              this.handlePopoverVisible(false);
+            };
+          }
         }
       }
     }
     return (
       <>
-        {this.popoverVisible ? (
-          <Teleport to="body">
-            <div style={this.popoverStyle}>
-              <div ref="floatRef" class="lee-popover-content" style={this.floatingStyles}>
-                {defaultSlots}
+        <Teleport to="body">
+          <Transition name="lee-popover-fade">
+            {this.popoverVisible || this.transitionVisible ? (
+              <div style={this.popoverStyle}>
                 <div
-                  ref="floatingArrowRef"
-                  class="lee-popover-arrow"
-                  style={this.floatArrowStyle}
-                ></div>
+                  ref="floatRef"
+                  onMouseenter={() => (this.popoverOnHover ? this.mouseEventHandler(true) : null)}
+                  onMouseleave={() => (this.popoverOnHover ? this.mouseEventHandler(false) : null)}
+                  class="lee-popover-content"
+                  style={this.floatingStyles}
+                >
+                  {defaultSlots}
+                  {this.showArrow ? (
+                    <div
+                      ref="floatingArrowRef"
+                      class="lee-popover-arrow"
+                      style={this.floatArrowStyle}
+                    ></div>
+                  ) : null}
+                </div>
               </div>
-            </div>
-          </Teleport>
-        ) : null}
+            ) : null}
+          </Transition>
+        </Teleport>
         {targetSlot}
       </>
     );

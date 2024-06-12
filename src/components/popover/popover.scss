@@ -12,3 +12,13 @@
   transform: rotate(45deg);
   border: 1px solid rgba(128, 128, 128, 0.1);
 }
+
+.lee-popover-fade-enter-active,
+.lee-popover-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.lee-popover-fade-enter-from,
+.lee-popover-fade-leave-to {
+  opacity: 0;
+}

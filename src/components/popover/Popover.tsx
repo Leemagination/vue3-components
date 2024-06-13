@@ -54,6 +54,15 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
     return getPropsValue(props.trigger, triggerPropList);
   });
 
+  function windowClickListener(el: MouseEvent) {
+    const target = el.target as HTMLElement;
+    if (target) {
+      if (!floatRef.value?.contains(target) && !targetRef.value?.contains(target)) {
+        handlePopoverVisible(false);
+      }
+    }
+  }
+
   function handlePopoverVisible(visible?: boolean) {
     if (props.disabled) {
       return;
@@ -66,7 +75,14 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
     } else {
       transitionTimer = setTimeout(() => {
         transitionVisible.value = false;
-      }, 100);
+      }, 50);
+    }
+    if (triggerValue.value === 'click') {
+      if (popoverVisible.value) {
+        window.addEventListener('click', windowClickListener, { capture: true });
+      } else {
+        window.removeEventListener('click', windowClickListener);
+      }
     }
   }
 
@@ -78,7 +94,7 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
 
   const targetRef = ref<Element | null>(null);
 
-  const floatRef = ref();
+  const floatRef = ref<HTMLElement>();
   const floatingArrowRef = ref();
   const { floatingStyles, middlewareData, placement, isPositioned } = useFloating(
     targetRef,

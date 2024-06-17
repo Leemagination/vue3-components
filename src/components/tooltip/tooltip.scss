@@ -1,0 +1,26 @@
+.lee-tooltip-content {
+  padding: 8px 16px;
+  background: #3a3a3a;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  max-width: 400px;
+}
+
+.lee-tooltip-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #3a3a3a;
+  transform: rotate(45deg);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.lee-tooltip-fade-enter-active,
+.lee-tooltip-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.lee-tooltip-fade-enter-from,
+.lee-tooltip-fade-leave-to {
+  opacity: 0;
+}

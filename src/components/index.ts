@@ -19,6 +19,7 @@ import Rate from './rate/Rate';
 import loadList from './list/index';
 import loadInputNumber from './inputNumber/index';
 import Popover from './popover/Popover';
+import Tooltip from './tooltip/Tooltip';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -41,5 +42,6 @@ export default {
     app.component('LeeCard', Card);
     app.component('LeeRate', Rate);
     app.component('LeePopover', Popover);
+    app.component('LeeTooltip', Tooltip);
   }
 };

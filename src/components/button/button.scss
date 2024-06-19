@@ -29,16 +29,6 @@ $disabledBorderColor: #cbcbcb;
 $whiteColor: #fff;
 $blackColor: #000;
 
-/*
- base|hover|active - (color,background-color,border-color),
- ghost - (normal,hover,active)
- shadow - animation
-*/
-* {
-  margin: 0;
-  padding: 0;
-}
-
 $buttonType: (
   default: (
     base: (

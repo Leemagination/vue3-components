@@ -20,6 +20,7 @@ import loadList from './list/index';
 import loadInputNumber from './inputNumber/index';
 import Popover from './popover/Popover';
 import Tooltip from './tooltip/Tooltip';
+import Calendar from './calendar/Calendar';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -43,5 +44,6 @@ export default {
     app.component('LeeRate', Rate);
     app.component('LeePopover', Popover);
     app.component('LeeTooltip', Tooltip);
+    app.component('LeeCalendar', Calendar);
   }
 };

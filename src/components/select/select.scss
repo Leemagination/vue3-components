@@ -1,5 +1,5 @@
 $primaryColor: #1184f5;
-$defaultBorderColor: #c7c7c7;
+$defaultBorderColor: #dedede;
 .lee-select-container {
   box-sizing: border-box;
   display: inline-flex;
@@ -16,6 +16,7 @@ $defaultBorderColor: #c7c7c7;
   padding: 6px 10px;
   background: #fff;
   justify-content: space-between;
+  align-items: center;
   &:hover,
   &:focus {
     border-color: $primaryColor;
@@ -38,11 +39,61 @@ $defaultBorderColor: #c7c7c7;
   color: $defaultBorderColor;
 }
 
+.lee-select-selected-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: $primaryColor;
+}
+
+.lee-select-clear-icon {
+  border-radius: 50%;
+  background: #d0d0d0;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background: #b7b7b7;
+  }
+  & > svg {
+    transform: scale(0.6);
+  }
+}
+
 .lee-select-input {
   outline: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.lee-select-multi-input {
+  outline: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -4px;
+}
+
+.lee-select-selected-item {
+  display: flex;
+  border: 1px solid $defaultBorderColor;
+  align-items: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding: 4px;
+  border-radius: 2px;
+  background: #f6f6f6;
+  cursor: default;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  & > .lee-select-clear-icon {
+    margin-left: 6px;
+  }
 }
 
 .lee-select-options-wrapper {
@@ -60,8 +111,15 @@ $defaultBorderColor: #c7c7c7;
   padding: 6px;
   cursor: pointer;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.2s linear;
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
+  }
+  &__selected {
+    color: $primaryColor;
   }
 }
 
@@ -80,7 +138,7 @@ $defaultBorderColor: #c7c7c7;
 
 .lee-select-fade-enter-active,
 .lee-select-fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .lee-select-fade-enter-from,

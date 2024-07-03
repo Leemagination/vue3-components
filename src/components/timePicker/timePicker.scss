@@ -1,0 +1,88 @@
+$primaryColor: #1184f5;
+$defaultBorderColor: #dedede;
+.lee-time-picker-container {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid $defaultBorderColor;
+  border-radius: 4px;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  min-height: 32px;
+  transition: border-color 0.2s ease;
+  outline: 0;
+  padding: 6px 10px;
+  background: #fff;
+  justify-content: space-between;
+  align-items: center;
+  &:hover,
+  &:focus {
+    border-color: $primaryColor;
+  }
+}
+
+.lee-time-picker-disabled {
+  cursor: not-allowed;
+  background: #f6f6f6;
+  &:hover,
+  &:focus {
+    border-color: $defaultBorderColor;
+  }
+}
+
+.lee-time-picker-icon {
+  width: 16px;
+  height: 16px;
+  color: $defaultBorderColor;
+  flex-shrink: 0;
+}
+
+.lee-time-picker-wrapper {
+  box-sizing: border-box;
+  max-height: 300px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  padding: 6px 4px;
+  border-radius: 6px;
+  background: #fff;
+  overflow: auto;
+  display: flex;
+}
+
+.lee-time-picker-num-list {
+  max-height: 200px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.lee-time-picker-num-item {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s linear;
+  &:hover {
+    background: $defaultBorderColor;
+  }
+  &__active {
+    background: $defaultBorderColor;
+    color: $primaryColor;
+  }
+}
+
+.lee-time-picker-fade-enter-active,
+.lee-time-picker-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.lee-time-picker-fade-enter-from,
+.lee-time-picker-fade-leave-to {
+  opacity: 0;
+}

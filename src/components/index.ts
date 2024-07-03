@@ -22,6 +22,7 @@ import Popover from './popover/Popover';
 import Tooltip from './tooltip/Tooltip';
 import Calendar from './calendar/Calendar';
 import Select from './select/Select';
+import TimePicker from './timePicker/TimePicker';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -47,5 +48,6 @@ export default {
     app.component('LeeTooltip', Tooltip);
     app.component('LeeCalendar', Calendar);
     app.component('LeeSelect', Select);
+    app.component('LeeTimePicker', TimePicker);
   }
 };

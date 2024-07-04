@@ -23,6 +23,19 @@ $defaultBorderColor: #dedede;
   }
 }
 
+.lee-time-picker-placeholder {
+  color: $defaultBorderColor;
+  position: absolute;
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .lee-time-picker-disabled {
   cursor: not-allowed;
   background: #f6f6f6;
@@ -39,15 +52,16 @@ $defaultBorderColor: #dedede;
   flex-shrink: 0;
 }
 
-.lee-time-picker-wrapper {
+.lee-time-picker-content {
   box-sizing: border-box;
-  max-height: 300px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
-  padding: 6px 4px;
+  padding: 6px 0;
   border-radius: 6px;
   background: #fff;
-  overflow: auto;
+}
+.lee-time-picker-list-wrapper {
   display: flex;
+  padding: 0 4px;
 }
 
 .lee-time-picker-num-list {
@@ -62,7 +76,7 @@ $defaultBorderColor: #dedede;
 }
 
 .lee-time-picker-num-item {
-  font-size: 14px;
+  font-size: 13px;
   padding: 6px 12px;
   margin-bottom: 2px;
   cursor: pointer;
@@ -74,6 +88,26 @@ $defaultBorderColor: #dedede;
   &__active {
     background: $defaultBorderColor;
     color: $primaryColor;
+  }
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+  }
+}
+
+.lee-time-picker-button-wrapper {
+  border-top: 1px solid #efefef;
+  padding: 6px 10px 0;
+  text-align: right;
+  .lee-time-picker-button {
+    &__confirm {
+      cursor: pointer;
+      background-color: $primaryColor;
+      display: inline-block;
+      padding: 2px 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+    }
   }
 }
 

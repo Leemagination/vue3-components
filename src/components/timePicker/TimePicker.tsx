@@ -8,7 +8,9 @@ import {
   computed,
   ExtractPropTypes,
   useModel,
-  PropType
+  PropType,
+  watch,
+  nextTick
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
@@ -32,6 +34,10 @@ const timePickerProps = {
   value: {
     type: Array as PropType<Array<number> | null>,
     default: null
+  },
+  placeholder: {
+    type: String,
+    default: '请选择时间'
   },
   disabled: Boolean,
   clearable: Boolean
@@ -67,6 +73,17 @@ const setup = (props: ExtractPropTypes<typeof timePickerProps>) => {
   });
   const secondValue = computed(() => {
     return timeValue.value?.[2] ?? null;
+  });
+
+  const hourListRef = ref<InstanceType<typeof NumList> | null>(null);
+  const minuteListRef = ref<InstanceType<typeof NumList> | null>(null);
+  const secondListRef = ref<InstanceType<typeof NumList> | null>(null);
+
+  watch(timeText, async () => {
+    await nextTick();
+    hourListRef.value?.scrollActiveItem();
+    minuteListRef.value?.scrollActiveItem();
+    secondListRef.value?.scrollActiveItem();
   });
 
   function setHour(val: number) {
@@ -138,12 +155,6 @@ const setup = (props: ExtractPropTypes<typeof timePickerProps>) => {
     }
   }
 
-  const hoverStatus = ref(false);
-
-  function changeHoverStatus(status: boolean) {
-    hoverStatus.value = status;
-  }
-
   return {
     timeText,
     floatRef,
@@ -155,10 +166,12 @@ const setup = (props: ExtractPropTypes<typeof timePickerProps>) => {
     hourValue,
     minuteValue,
     secondValue,
+    hourListRef,
+    minuteListRef,
+    secondListRef,
     setHour,
     setMinute,
     setSecond,
-    changeHoverStatus,
     handlePickerVisible
   };
 };
@@ -171,8 +184,6 @@ const TimePicker = defineComponent({
     return (
       <>
         <div
-          onMouseenter={() => this.changeHoverStatus(true)}
-          onMouseleave={() => this.changeHoverStatus(false)}
           ref="targetRef"
           class={['lee-time-picker-container', this.disabled ? 'lee-time-picker-disabled' : null]}
           tabindex="0"
@@ -180,29 +191,41 @@ const TimePicker = defineComponent({
         >
           <span class="lee-time-picker-value">{this.timeText}</span>
           {timeIcon}
+          {this.timeText ? null : <div class="lee-time-picker-placeholder">{this.placeholder}</div>}
         </div>
         <Teleport to="body">
           <Transition name="lee-time-picker-fade">
             {this.pickerVisible || this.transitionVisible ? (
               <div style={this.zIndexStyle}>
-                <div
-                  onMouseenter={() => this.changeHoverStatus(true)}
-                  onMouseleave={() => this.changeHoverStatus(false)}
-                  ref="floatRef"
-                  class="lee-time-picker-wrapper"
-                  style={this.floatingStyles}
-                >
-                  <NumList maxNum={24} activeNum={this.hourValue} onClick={this.setHour}></NumList>
-                  <NumList
-                    maxNum={60}
-                    activeNum={this.minuteValue}
-                    onClick={this.setMinute}
-                  ></NumList>
-                  <NumList
-                    maxNum={60}
-                    activeNum={this.secondValue}
-                    onClick={this.setSecond}
-                  ></NumList>
+                <div ref="floatRef" class="lee-time-picker-content" style={this.floatingStyles}>
+                  <div class="lee-time-picker-list-wrapper">
+                    <NumList
+                      ref="hourListRef"
+                      maxNum={24}
+                      activeNum={this.hourValue}
+                      onClick={this.setHour}
+                    ></NumList>
+                    <NumList
+                      ref="minuteListRef"
+                      maxNum={60}
+                      activeNum={this.minuteValue}
+                      onClick={this.setMinute}
+                    ></NumList>
+                    <NumList
+                      ref="secondListRef"
+                      maxNum={60}
+                      activeNum={this.secondValue}
+                      onClick={this.setSecond}
+                    ></NumList>
+                  </div>
+                  <div class="lee-time-picker-button-wrapper">
+                    <div
+                      class="lee-time-picker-button__confirm"
+                      onClick={() => this.handlePickerVisible(false)}
+                    >
+                      确认
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : null}

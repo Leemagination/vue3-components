@@ -106,6 +106,7 @@ const ItemSetup = (
   }
 
   function hideItem() {
+    context.emit('hide');
     itemShow.value = false;
   }
 

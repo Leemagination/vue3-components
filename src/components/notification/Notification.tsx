@@ -3,21 +3,28 @@ import './notification.scss';
 import NotificationItem from './NotificationItem';
 import {
   deleteNotificationItem,
+  hideNotificationItem,
   notificationItemRef,
   notificationList,
   notificationPlacement
 } from './useNotification';
+import { ItemRefStatus } from './interface';
 
 const ContainerSetup = () => {
   function handleItemClose(key: number) {
     deleteNotificationItem(key);
   }
 
+  function handleItemHide(key: number) {
+    hideNotificationItem(key);
+  }
+
   return {
     notificationPlacement,
     notificationList,
     notificationItemRef,
-    handleItemClose
+    handleItemClose,
+    handleItemHide
   };
 };
 
@@ -40,13 +47,19 @@ const NotificationContainer = defineComponent({
                 placement={this.notificationPlacement}
                 ref={
                   ((el: InstanceType<typeof NotificationItem>) => {
-                    if (el) {
-                      this.notificationItemRef[notification.key] = el;
+                    if (el && !this.notificationItemRef[notification.key]) {
+                      this.notificationItemRef[notification.key] = {
+                        ref: el,
+                        status: ItemRefStatus.Show
+                      };
                     }
                   }) as () => void
                 }
                 key={notification.key}
                 info={notification}
+                onHide={() => {
+                  this.handleItemHide(notification.key);
+                }}
                 onClose={() => {
                   this.handleItemClose(notification.key);
                 }}

@@ -10,6 +10,7 @@ import {
   Transition
 } from 'vue';
 import { NotificationItemEmits, NotificationItemEmitType, NotificationItemType } from './interface';
+import { isComponent } from '../../util';
 
 const closeIcon = (
   <svg viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -71,7 +72,7 @@ const ItemSetup = (
   }
 
   function hideItem() {
-    console.log('hide item');
+    context.emit('hide');
     itemShow.value = false;
   }
 
@@ -96,7 +97,39 @@ const ItemSetup = (
     }
   });
 
+  const titleRender = computed(() => {
+    if (isComponent(props.info.title)) {
+      return h(props.info.title);
+    }
+    return props.info?.title;
+  });
+
+  const descRender = computed(() => {
+    if (isComponent(props.info?.description)) {
+      return h(props.info.description);
+    }
+    return props.info?.description;
+  });
+
+  const contentRender = computed(() => {
+    if (isComponent(props.info?.content)) {
+      return h(props.info.content);
+    }
+    return props.info?.content;
+  });
+
+  const metaRender = computed(() => {
+    if (isComponent(props.info?.meta)) {
+      return h(props.info.meta);
+    }
+    return props.info?.meta;
+  });
+
   return {
+    titleRender,
+    descRender,
+    contentRender,
+    metaRender,
     hideItem,
     itemShow,
     removeNotificationItem,
@@ -127,16 +160,22 @@ const NotificationItem = defineComponent({
             this.itemShow ? (
               <div class="lee-notification-item">
                 <div class="lee-notification-item-title">
-                  <span>{this.info.title}</span>
+                  <div>{this.titleRender}</div>
                   {this.info.closable ? (
                     <div class="lee-notification-item-close-icon" onClick={this.hideItem}>
                       {closeIcon}
                     </div>
                   ) : null}
                 </div>
-                <div class="lee-notification-item-description">{this.info.description}</div>
-                <div class="lee-notification-item-content">{this.info.content}</div>
-                <div class="lee-notification-item-meta">{this.info.meta}</div>
+                {this.descRender ? (
+                  <div class="lee-notification-item-description">{this.descRender}</div>
+                ) : null}
+                {this.contentRender ? (
+                  <div class="lee-notification-item-content">{this.contentRender}</div>
+                ) : null}
+                {this.metaRender ? (
+                  <div class="lee-notification-item-meta">{this.metaRender}</div>
+                ) : null}
               </div>
             ) : null
           ]

@@ -1,12 +1,14 @@
-export type NotificationItemEmitType = 'close';
+import { Component, VNode } from 'vue';
 
-export const NotificationItemEmits = ['close'];
+export type NotificationItemEmitType = 'close' | 'hide';
+
+export const NotificationItemEmits = ['close', 'hide'];
 
 export interface NotificationConfig {
-  title?: string;
-  description?: string;
-  content?: string;
-  meta?: string;
+  title?: string | Component | VNode;
+  description?: string | Component | VNode;
+  content?: string | Component | VNode;
+  meta?: string | Component | VNode;
   duration: number;
   closable?: boolean;
 }
@@ -19,4 +21,9 @@ export interface NotificationGlobalConfig {
 
 export interface NotificationItemType extends NotificationConfig {
   key: number;
+}
+
+export enum ItemRefStatus {
+  Hiding = 'hiding',
+  Show = 'show'
 }

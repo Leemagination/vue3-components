@@ -1,5 +1,10 @@
 import { App, computed, createApp, h, reactive, ref, watch } from 'vue';
-import { NotificationConfig, NotificationGlobalConfig, NotificationItemType } from './interface';
+import {
+  ItemRefStatus,
+  NotificationConfig,
+  NotificationGlobalConfig,
+  NotificationItemType
+} from './interface';
 import NotificationItem from './NotificationItem';
 import NotificationContainer from './Notification';
 
@@ -28,12 +33,14 @@ export const notificationPlacement = computed(() => {
 export const notificationList = ref<NotificationItemType[]>([]);
 export let containerVNode: App<Element> | null = null;
 export let containerDom: HTMLElement | null = null;
-export const notificationItemRef = ref<Record<string, InstanceType<typeof NotificationItem>>>({});
+export const notificationItemRef = ref<
+  Record<string, { ref: InstanceType<typeof NotificationItem>; status: string }>
+>({});
 
 function removeNotificationByKey(key: string) {
   const notificationRef = notificationItemRef.value[key];
   if (notificationRef) {
-    notificationRef.hideItem();
+    notificationRef.ref.hideItem();
   }
 }
 
@@ -44,16 +51,20 @@ export function clearAllNotification() {
 }
 
 watch(notificationList, (val, oldValue) => {
-  if (oldValue.length === 0 && val.length === 1) {
+  if (oldValue.length === 0 && val.length) {
     insertContainer();
   }
-  if (oldValue.length === 1 && val.length === 0) {
+  if (oldValue.length && val.length === 0) {
     removeContainer();
   }
 });
 
 export function deleteNotificationItem(key: number) {
   notificationList.value = notificationList.value.filter((item) => item.key !== key);
+}
+
+export function hideNotificationItem(key: number) {
+  notificationItemRef.value[key].status = ItemRefStatus.Hiding;
 }
 
 function insertContainer() {
@@ -93,14 +104,20 @@ export default function useNotification(config: Partial<NotificationConfig> | un
       key: keyCounter
     }
   ];
-  console.log(notificationList.value.length, notificationConfig.maxItem);
   if (
     notificationList.value.length &&
     notificationConfig.maxItem &&
     notificationList.value.length > notificationConfig.maxItem
   ) {
-    const notificationItem = notificationList.value[0];
-    notificationItemRef.value[notificationItem.key].hideItem();
+    const len = notificationList.value.length;
+    for (let i = 0; i < len; i++) {
+      const notificationItem = notificationList.value[i];
+
+      if (notificationItemRef.value[notificationItem.key].status === ItemRefStatus.Show) {
+        notificationItemRef.value[notificationItem.key].ref.hideItem();
+        break;
+      }
+    }
   }
   const key = String(keyCounter);
   function close() {

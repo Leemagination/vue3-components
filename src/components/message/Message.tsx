@@ -1,18 +1,30 @@
 import { defineComponent, h, Teleport } from 'vue';
 import './message.scss';
 import MessageItem from './MessageItem';
-import { deleteMessageItem, messageItemRef, messageList, messagePlacement } from './useMessage';
+import {
+  deleteMessageItem,
+  hideMessageItem,
+  messageItemRef,
+  messageList,
+  messagePlacement
+} from './useMessage';
+import { ItemRefStatus } from './interface';
 
 const ContainerSetup = () => {
   function handleItemClose(key: number) {
     deleteMessageItem(key);
   }
 
+  function handleItemHide(key: number) {
+    hideMessageItem(key);
+  }
+
   return {
     messagePlacement,
     messageList,
     messageItemRef,
-    handleItemClose
+    handleItemClose,
+    handleItemHide
   };
 };
 
@@ -32,13 +44,14 @@ const MessageContainer = defineComponent({
               <MessageItem
                 ref={
                   ((el: InstanceType<typeof MessageItem>) => {
-                    if (el) {
-                      this.messageItemRef[message.key] = el;
+                    if (el && !this.messageItemRef[message.key]) {
+                      this.messageItemRef[message.key] = { ref: el, status: ItemRefStatus.Show };
                     }
                   }) as () => void
                 }
                 key={message.key}
                 info={message}
+                onHide={() => this.handleItemHide(message.key)}
                 onClose={() => {
                   this.handleItemClose(message.key);
                 }}

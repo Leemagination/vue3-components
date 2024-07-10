@@ -1,5 +1,5 @@
 import { App, computed, createApp, h, reactive, ref, watch } from 'vue';
-import { MessageConfig, MessageGlobalConfig, MessageItemType } from './interface';
+import { ItemRefStatus, MessageConfig, MessageGlobalConfig, MessageItemType } from './interface';
 import MessageItem from './MessageItem';
 import MessageContainer from './Message';
 
@@ -28,12 +28,14 @@ export const messagePlacement = computed(() => {
 export const messageList = ref<MessageItemType[]>([]);
 export let containerVNode: App<Element> | null = null;
 export let containerDom: HTMLElement | null = null;
-export const messageItemRef = ref<Record<string, InstanceType<typeof MessageItem>>>({});
+export const messageItemRef = ref<
+  Record<string, { ref: InstanceType<typeof MessageItem>; status: ItemRefStatus }>
+>({});
 
 function removeMessageByKey(key: string) {
   const messageRef = messageItemRef.value[key];
   if (messageRef) {
-    messageRef.hideItem();
+    messageRef.ref.hideItem();
   }
 }
 
@@ -44,16 +46,20 @@ export function clearAllMessage() {
 }
 
 watch(messageList, (val, oldValue) => {
-  if (oldValue.length === 0 && val.length === 1) {
+  if (oldValue.length === 0 && val.length) {
     insertContainer();
   }
-  if (oldValue.length === 1 && val.length === 0) {
+  if (oldValue.length && val.length === 0) {
     removeContainer();
   }
 });
 
 export function deleteMessageItem(key: number) {
   messageList.value = messageList.value.filter((item) => item.key !== key);
+}
+
+export function hideMessageItem(key: number) {
+  messageItemRef.value[key].status = ItemRefStatus.Hiding;
 }
 
 function insertContainer() {
@@ -91,9 +97,19 @@ export default function useMessage(config: Partial<MessageConfig> | undefined) {
       key: keyCounter
     }
   ];
-  if (messageList.value.length && messageList.value.length > messageConfig.maxItem) {
-    const messageItem = messageList.value[0];
-    messageItemRef.value[messageItem.key].hideItem();
+  if (
+    messageList.value.length &&
+    messageConfig.maxItem &&
+    messageList.value.length > messageConfig.maxItem
+  ) {
+    const len = messageList.value.length;
+    for (let i = 0; i < len; i++) {
+      const messageItem = messageList.value[i];
+      if (messageItemRef.value[messageItem.key].status === ItemRefStatus.Show) {
+        messageItemRef.value[messageItem.key].ref.hideItem();
+        break;
+      }
+    }
   }
   const key = String(keyCounter);
   function close() {

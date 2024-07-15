@@ -1,0 +1,58 @@
+$primaryColor: #1a85ff;
+
+.lee-popconfirm-content {
+  padding: 8px 16px;
+  background: #fff;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lee-popconfirm-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  transform: rotate(45deg);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.lee-popconfirm-footer {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+  .lee-popconfirm-button {
+    padding: 4px 6px;
+    border: 1px solid #e8e8e8;
+    font-size: 14px;
+    line-height: 1em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s linear;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &--cancel {
+      &:hover {
+        color: $primaryColor;
+        border-color: $primaryColor;
+      }
+    }
+    &--confirm {
+      color: #fff;
+      background-color: $primaryColor;
+      border: 1px solid transparent;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+.lee-popconfirm-fade-enter-active,
+.lee-popconfirm-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.lee-popconfirm-fade-enter-from,
+.lee-popconfirm-fade-leave-to {
+  opacity: 0;
+}

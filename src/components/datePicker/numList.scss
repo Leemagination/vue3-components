@@ -1,0 +1,32 @@
+$primaryColor: #1184f5;
+$defaultBorderColor: #dedede;
+
+.lee-date-picker-num-list {
+  max-height: 200px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.lee-date-picker-num-item {
+  font-size: 13px;
+  padding: 6px 12px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s linear;
+  &:hover {
+    background: $defaultBorderColor;
+  }
+  &__active {
+    background: $defaultBorderColor;
+    color: $primaryColor;
+  }
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+  }
+}

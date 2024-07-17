@@ -1,0 +1,21 @@
+.lee-date-text-content {
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+  border-radius: 6px;
+  background: #fff;
+}
+.lee-date-text-list-wrapper {
+  display: flex;
+  padding: 0 4px;
+}
+
+.lee-date-text-fade-enter-active,
+.lee-date-text-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.lee-date-text-fade-enter-from,
+.lee-date-text-fade-leave-to {
+  opacity: 0;
+}

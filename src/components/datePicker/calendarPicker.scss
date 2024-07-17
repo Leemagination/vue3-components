@@ -1,0 +1,68 @@
+$borderColor: #dadada;
+.lee-calendar-picker {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+  .lee-calendar-picker-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 8px;
+    &__button {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      cursor: pointer;
+      &:hover {
+        border-color: #1184f5;
+        color: #1184f5;
+      }
+    }
+    &__current-date {
+      flex: 1;
+      justify-content: center;
+      display: inline-flex;
+    }
+  }
+  .lee-calendar-picker-row {
+    display: flex;
+    color: #cccccc;
+    font-size: 14px;
+    .lee-calendar-picker-item {
+      flex: 1;
+      min-width: 0;
+      cursor: pointer;
+      &__current-month {
+        color: #444444;
+      }
+      &__active-date {
+        .lee-calendar-picker-item__info-date {
+          color: #1184f5;
+        }
+      }
+      .lee-calendar-picker-cell {
+        padding: 6px 10px;
+      }
+      &:hover {
+        background: rgba(0, 0, 0, 0.08);
+      }
+      &__info-month {
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 6px;
+      }
+    }
+  }
+  .lee-calendar-picker-day-row {
+    color: #444444;
+    border-bottom: 1px solid $borderColor;
+
+    .lee-calendar-picker-item {
+      cursor: default;
+      &:hover {
+        background: unset;
+      }
+    }
+  }
+}

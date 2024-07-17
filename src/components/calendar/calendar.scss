@@ -5,6 +5,7 @@ $borderColor: #b7b7b7;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  text-align: center;
   .lee-calendar-header {
     border-bottom: 1px solid $borderColor;
     display: flex;
@@ -25,6 +26,8 @@ $borderColor: #b7b7b7;
     }
     &__current-date {
       flex: 1;
+      justify-content: center;
+      display: inline-flex;
       font-weight: bold;
     }
   }

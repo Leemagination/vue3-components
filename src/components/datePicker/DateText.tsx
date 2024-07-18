@@ -142,7 +142,7 @@ const DateText = defineComponent({
             {this.pickerVisible || this.transitionVisible ? (
               <div style={this.zIndexStyle}>
                 <div ref="floatRef" class="lee-date-text-content" style={this.floatingStyles}>
-                  <div class="lee-date-text-list-wrapper">
+                  <div class="lee-date-text-list-wrapper" onClick={(ev) => ev.stopPropagation()}>
                     <NumList
                       ref="yearListRef"
                       minNum={1900}

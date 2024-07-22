@@ -25,6 +25,7 @@ import Select from './select/Select';
 import TimePicker from './timePicker/TimePicker';
 import Popconfirm from './popconfirm/Popconfirm';
 import DatePicker from './datePicker/DatePicker';
+import Modal from './modal/Modal';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -53,5 +54,6 @@ export default {
     app.component('LeeTimePicker', TimePicker);
     app.component('LeePopconfirm', Popconfirm);
     app.component('LeeDatePicker', DatePicker);
+    app.component('LeeModal', Modal);
   }
 };

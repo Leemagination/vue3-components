@@ -12,7 +12,8 @@ import {
   watch,
   computed,
   PropType,
-  Transition
+  Transition,
+  StyleValue
 } from 'vue';
 import './popconfirm.scss';
 import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
@@ -122,8 +123,8 @@ const setup = (props: ExtractPropTypes<typeof popconfirmProps>) => {
       middleware: [offset(10), flip(), shift(), arrow({ element: floatingArrowRef })]
     }
   );
-  const popconfirmStyle = computed(() => {
-    return { zIndex: zIndex.value };
+  const popconfirmStyle = computed<StyleValue>(() => {
+    return { zIndex: zIndex.value, position: 'relative' };
   });
   onMounted(() => {
     const instance = getCurrentInstance();

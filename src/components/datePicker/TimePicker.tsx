@@ -10,7 +10,8 @@ import {
   useModel,
   PropType,
   watch,
-  nextTick
+  nextTick,
+  StyleValue
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
@@ -124,8 +125,8 @@ const setup = (props: ExtractPropTypes<typeof timePickerProps>) => {
     middleware: [flip()]
   });
 
-  const zIndexStyle = computed(() => {
-    return { zIndex: zIndex.value };
+  const zIndexStyle = computed<StyleValue>(() => {
+    return { zIndex: zIndex.value, position: 'relative' };
   });
 
   function windowClickListener(el: MouseEvent) {

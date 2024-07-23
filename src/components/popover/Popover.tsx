@@ -12,7 +12,8 @@ import {
   watch,
   computed,
   PropType,
-  Transition
+  Transition,
+  StyleValue
 } from 'vue';
 import './popover.scss';
 import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
@@ -106,8 +107,8 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
       middleware: [offset(10), flip(), shift(), arrow({ element: floatingArrowRef })]
     }
   );
-  const popoverStyle = computed(() => {
-    return { zIndex: zIndex.value };
+  const popoverStyle = computed<StyleValue>(() => {
+    return { zIndex: zIndex.value, position: 'relative' };
   });
   onMounted(() => {
     const instance = getCurrentInstance();

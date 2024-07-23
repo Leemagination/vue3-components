@@ -8,7 +8,8 @@ import {
   Fragment,
   Transition,
   Teleport,
-  ref
+  ref,
+  StyleValue
 } from 'vue';
 import './select.scss';
 import { SelectType } from './interface';
@@ -85,8 +86,8 @@ const setup = (
     middleware: [flip()]
   });
 
-  const zIndexStyle = computed(() => {
-    return { zIndex: zIndex.value };
+  const zIndexStyle = computed<StyleValue>(() => {
+    return { zIndex: zIndex.value, position: 'relative' };
   });
 
   function windowClickListener(el: MouseEvent) {

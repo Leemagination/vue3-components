@@ -10,7 +10,8 @@ import {
   watch,
   nextTick,
   ExtractPropTypes,
-  SetupContext
+  SetupContext,
+  StyleValue
 } from 'vue';
 import { Dayjs } from 'dayjs';
 import { createZIndex } from '../../util/zIndex';
@@ -42,8 +43,8 @@ const setup = (
     middleware: [flip()]
   });
 
-  const zIndexStyle = computed(() => {
-    return { zIndex: zIndex.value };
+  const zIndexStyle = computed<StyleValue>(() => {
+    return { zIndex: zIndex.value, position: 'relative' };
   });
 
   function windowClickListener(el: MouseEvent) {

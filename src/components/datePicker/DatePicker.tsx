@@ -5,6 +5,7 @@ import {
   h,
   PropType,
   ref,
+  StyleValue,
   Teleport,
   Transition,
   useModel
@@ -98,8 +99,8 @@ const setup = (props: ExtractPropTypes<typeof DatePickerProps>) => {
     middleware: [flip()]
   });
 
-  const zIndexStyle = computed(() => {
-    return { zIndex: zIndex.value };
+  const zIndexStyle = computed<StyleValue>(() => {
+    return { zIndex: zIndex.value, position: 'relative' };
   });
 
   function windowClickListener(el: MouseEvent) {

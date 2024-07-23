@@ -1,19 +1,24 @@
 import {
+  Component,
   computed,
   defineComponent,
   ExtractPropTypes,
   h,
+  PropType,
   ref,
   renderSlot,
   SetupContext,
+  StyleValue,
   Teleport,
   Transition,
   useModel,
+  VNode,
   watch
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
 import './modal.scss';
 import { modalEmits, ModalEmitType } from './interface';
+import { isComponent } from '../../util';
 
 const closeIcon = (
   <svg viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -31,7 +36,7 @@ const modalProps = {
     default: true
   },
   modalStyle: {
-    type: Object,
+    type: Object as PropType<StyleValue>,
     default: null
   },
   visible: {
@@ -42,8 +47,14 @@ const modalProps = {
     type: Number,
     default: undefined
   },
-  title: String,
-  content: String,
+  title: {
+    type: String as PropType<string | VNode | Component>,
+    default: ''
+  },
+  content: {
+    type: String as PropType<string | VNode | Component>,
+    default: ''
+  },
   showCancel: Boolean,
   showConfirm: Boolean,
   cancelText: {
@@ -143,13 +154,15 @@ const Modal = defineComponent({
       $slots,
       'default',
       {},
-      $props.content ? () => [$props.content] : undefined
+      $props.content
+        ? () => [isComponent($props.content) ? h($props.content) : $props.content]
+        : undefined
     );
     const headerSlot = renderSlot(
       $slots,
       'header',
       {},
-      $props.title ? () => [$props.title] : undefined
+      $props.title ? () => [isComponent($props.title) ? h($props.title) : $props.title] : undefined
     );
     const footerSlot = renderSlot($slots, 'footer', {}, () => [
       <div class="lee-modal-content__footer">

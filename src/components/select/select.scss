@@ -125,6 +125,7 @@ $defaultBorderColor: #dedede;
 
 .lee-select-placeholder {
   color: $defaultBorderColor;
+  box-sizing: border-box;
   position: absolute;
   display: flex;
   padding: 0 10px;

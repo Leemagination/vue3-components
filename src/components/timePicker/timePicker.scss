@@ -25,6 +25,7 @@ $defaultBorderColor: #dedede;
 
 .lee-time-picker-placeholder {
   color: $defaultBorderColor;
+  box-sizing: border-box;
   position: absolute;
   display: flex;
   padding: 0 10px;

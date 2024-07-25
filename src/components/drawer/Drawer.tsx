@@ -96,6 +96,7 @@ const setup = (
   function closeModal() {
     visibleValue.value = false;
   }
+
   function handleMaskClick(e: MouseEvent) {
     if (props.maskClosable) {
       closeModal();
@@ -125,14 +126,20 @@ const setup = (
       left: ['width', 'height'],
       right: ['width', 'height']
     };
+
+    const sizeStyle: StyleValue = {};
+    sizeStyle[sizeMap[validPlacement.value][1]] = '100%';
+    sizeStyle[validPlacement.value] = '0';
+
+    if (props.size) {
+      sizeStyle[sizeMap[validPlacement.value][0]] =
+        typeof props.size === 'number' ? `${props.size}px` : props.size;
+    }
+    result = {
+      ...sizeStyle
+    };
+
     if (typeof props.drawerStyle === 'object') {
-      const sizeStyle: StyleValue = {};
-      if (props.size) {
-        sizeStyle[sizeMap[validPlacement.value][0]] =
-          typeof props.size === 'number' ? `${props.size}px` : props.size;
-        sizeStyle[sizeMap[validPlacement.value][1]] = '100%';
-        sizeStyle[validPlacement.value] = '0';
-      }
       result = {
         ...sizeStyle,
         ...props.drawerStyle

@@ -27,6 +27,7 @@ import Popconfirm from './popconfirm/Popconfirm';
 import DatePicker from './datePicker/DatePicker';
 import Modal from './modal/Modal';
 import Drawer from './drawer/Drawer';
+import Dropdown from './dropdown/Dropdown';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -57,5 +58,6 @@ export default {
     app.component('LeeDatePicker', DatePicker);
     app.component('LeeModal', Modal);
     app.component('LeeDrawer', Drawer);
+    app.component('LeeDropdown', Dropdown);
   }
 };

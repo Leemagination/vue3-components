@@ -1,0 +1,41 @@
+.lee-dropdown-menu {
+  width: max-content;
+  position: relative;
+  padding: 6px 4px;
+  background: #fff;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lee-dropdown-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s linear;
+  border-radius: 2px;
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &--disabled {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+  }
+}
+
+.lee-dropdown-menu-arrow-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+}
+
+.lee-dropdown-fade-enter-active,
+.lee-dropdown-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.lee-dropdown-fade-enter-from,
+.lee-dropdown-fade-leave-to {
+  opacity: 0;
+}

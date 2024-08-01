@@ -28,6 +28,7 @@ import DatePicker from './datePicker/DatePicker';
 import Modal from './modal/Modal';
 import Drawer from './drawer/Drawer';
 import Dropdown from './dropdown/Dropdown';
+import Pagination from './pagination/Pagination';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -59,5 +60,6 @@ export default {
     app.component('LeeModal', Modal);
     app.component('LeeDrawer', Drawer);
     app.component('LeeDropdown', Dropdown);
+    app.component('LeePagination', Pagination);
   }
 };

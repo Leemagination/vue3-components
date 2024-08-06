@@ -29,6 +29,7 @@ import Modal from './modal/Modal';
 import Drawer from './drawer/Drawer';
 import Dropdown from './dropdown/Dropdown';
 import Pagination from './pagination/Pagination';
+import loadTabs from './tabs/index';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -41,6 +42,7 @@ export default {
     loadCheckbox(app);
     loadList(app);
     loadInputNumber(app);
+    loadTabs(app);
     app.component('LeeDivider', Divider);
     app.component('LeeSwitch', Switch);
     app.component('LeeTag', Tag);

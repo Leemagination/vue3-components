@@ -1,0 +1,77 @@
+.lee-tabs-container {
+  width: 100%;
+}
+
+.lee-tabs-nav-wrapper {
+  padding: 10px 0;
+  display: flex;
+  border-bottom: 1px solid #ececec;
+  overflow: auto;
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .lee-tabs-nav-item {
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    &--activated {
+      color: #1a85ff;
+    }
+  }
+}
+
+.lee-tabs-content-wrapper {
+  padding-top: 16px;
+}
+
+.lee-tab-move-next-enter-active,
+.lee-tab-move-next-leave-active {
+  position: absolute;
+  transition: all 0.2s ease;
+  transform: translateX(0);
+}
+
+.lee-tab-move-next-enter-from {
+  opacity: 0;
+  transform: translateX(50%);
+}
+
+.lee-tab-move-next-enter-to {
+  transform: translateX(0);
+}
+
+.lee-tab-move-next-leave-from {
+  transform: translateX(0);
+}
+.lee-tab-move-next-leave-to {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.lee-tab-move-prev-enter-active,
+.lee-tab-move-prev-leave-active {
+  position: absolute;
+  transition: all 0.2s ease;
+  transform: translateX(0);
+}
+
+.lee-tab-move-prev-enter-from {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.lee-tab-move-prev-enter-to {
+  transform: translateX(0);
+}
+
+.lee-tab-move-prev-leave-from {
+  transform: translateX(0);
+}
+.lee-tab-move-prev-leave-to {
+  opacity: 0;
+  transform: translateX(50%);
+}

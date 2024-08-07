@@ -4,9 +4,8 @@
 
 .lee-tabs-nav-wrapper {
   padding: 10px 0;
-  display: flex;
   border-bottom: 1px solid #ececec;
-  overflow: auto;
+
   position: relative;
   &::-webkit-scrollbar {
     display: none;
@@ -22,6 +21,22 @@
       color: #1a85ff;
     }
   }
+}
+
+.lee-tabs-nav-scroll-area {
+  display: flex;
+  overflow: auto;
+}
+
+.lee-tabs-active-mark {
+  transition: left 0.2s linear;
+  height: 2px;
+  width: 0;
+  background-color: #1a85ff;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
 }
 
 .lee-tabs-content-wrapper {

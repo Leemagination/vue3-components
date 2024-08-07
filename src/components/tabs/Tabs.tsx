@@ -30,6 +30,19 @@ const setup = (props: ExtractPropTypes<typeof tabsProps>, context: SetupContext)
   const activeValue = useModel(props, 'value');
   const transitionName = ref('lee-tab-move-next');
   const tabKeyList = ref<TabKeyType[]>([]);
+  const activeRef = ref<HTMLElement | null>(null);
+  const activeMarkRef = ref<HTMLElement | null>(null);
+
+  watch([activeRef, activeMarkRef], ([el1, el2]) => {
+    if (el2) {
+      el2.style.width = '0';
+    }
+    if (el1 && el2) {
+      el2.style.left = `${el1.offsetLeft}px`;
+      el2.style.width = `${el1.offsetWidth}px`;
+    }
+  });
+
   function handleNavClick(item: NavListItem) {
     activeValue.value = item.key;
   }
@@ -60,6 +73,8 @@ const setup = (props: ExtractPropTypes<typeof tabsProps>, context: SetupContext)
   });
 
   return {
+    activeMarkRef,
+    activeRef,
     tabKeyList,
     activeValue,
     transitionName,
@@ -116,16 +131,26 @@ const Tabs = defineComponent({
     return (
       <div class="lee-tabs-container">
         <div class="lee-tabs-nav-wrapper">
-          {navList.map((item) => {
-            return (
-              <div
-                class={['lee-tabs-nav-item', item.active ? 'lee-tabs-nav-item--activated' : null]}
-                onClick={() => this.handleNavClick(item)}
-              >
-                {item.name}
-              </div>
-            );
-          })}
+          <div class="lee-tabs-nav-scroll-area">
+            {navList.map((item) => {
+              return (
+                <div
+                  ref={
+                    ((el: HTMLElement) => {
+                      if (item.active) {
+                        this.activeRef = el;
+                      }
+                    }) as () => void
+                  }
+                  class={['lee-tabs-nav-item', item.active ? 'lee-tabs-nav-item--activated' : null]}
+                  onClick={() => this.handleNavClick(item)}
+                >
+                  {item.name}
+                </div>
+              );
+            })}
+          </div>
+          <div ref="activeMarkRef" class="lee-tabs-active-mark"></div>
         </div>
         {children.length ? (
           <div class="lee-tabs-content-wrapper">

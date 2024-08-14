@@ -1,0 +1,63 @@
+.lee-tree-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.lee-tree-item-arrow {
+  color: #5c5c5c;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: all 0.1s ease;
+  &--expanded {
+    transform: rotate(90deg);
+  }
+}
+
+.lee-tree-level-space {
+  width: 24px;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.lee-tree-checkbox {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px;
+  border: 1px solid transparent;
+  transition: background-color 0.1s linear;
+  color: #fff;
+  background-color: #1a85ff;
+  &--uncheck {
+    border: 1px solid #c9c9c9;
+    background-color: #fff;
+  }
+  .lee-tree-checkbox-icon {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.lee-tree-fade-enter-active,
+.lee-tree-fade-leave-active {
+  transition: all 0.2s ease;
+  transform-origin: left top;
+}
+
+.lee-tree-fade-enter-from,
+.lee-tree-fade-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.lee-tree-fade-enter-to,
+.lee-tree-fade-leave-from {
+  opacity: 0.3;
+  transform: scaleY(1);
+}

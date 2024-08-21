@@ -1,0 +1,129 @@
+$primaryColor: #1184f5;
+$defaultBorderColor: #dedede;
+
+.lee-cascader-option-wrapper {
+  width: max-content;
+  position: relative;
+  padding: 6px 4px;
+  background: #fff;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lee-cascader-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s linear;
+  border-radius: 2px;
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &--disabled {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+  }
+}
+
+.lee-cascader-arrow-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+}
+
+.lee-cascader-check-icon {
+  color: $primaryColor;
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+}
+
+.lee-cascader-select-container {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid $defaultBorderColor;
+  border-radius: 4px;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  min-height: 32px;
+  transition: border-color 0.2s ease;
+  outline: 0;
+  padding: 6px 10px;
+  background: #fff;
+  justify-content: space-between;
+  align-items: center;
+  &:hover,
+  &:focus {
+    border-color: $primaryColor;
+  }
+}
+
+.lee-cascader-select-disabled {
+  cursor: not-allowed;
+  background: #f6f6f6;
+  &:hover,
+  &:focus {
+    border-color: $defaultBorderColor;
+  }
+}
+
+.lee-cascader-select-arrow-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: $defaultBorderColor;
+}
+.lee-cascader-select-clear-icon {
+  border-radius: 50%;
+  background: #d0d0d0;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background: #b7b7b7;
+  }
+  & > svg {
+    transform: scale(0.6);
+  }
+}
+
+.lee-cascader-select-input {
+  outline: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lee-cascader-select-placeholder {
+  color: $defaultBorderColor;
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.lee-cascader-fade-enter-active,
+.lee-cascader-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.lee-cascader-fade-enter-from,
+.lee-cascader-fade-leave-to {
+  opacity: 0;
+}

@@ -31,6 +31,7 @@ import Dropdown from './dropdown/Dropdown';
 import Pagination from './pagination/Pagination';
 import loadTabs from './tabs/index';
 import Tree from './tree/Tree';
+import Cascader from './cascader/Cascader';
 export default {
   install: (app: App) => {
     loadButton(app);
@@ -63,6 +64,7 @@ export default {
     app.component('LeeModal', Modal);
     app.component('LeeDrawer', Drawer);
     app.component('LeeDropdown', Dropdown);
+    app.component('LeeCascader', Cascader);
     app.component('LeePagination', Pagination);
     app.component('LeeTree', Tree);
   }

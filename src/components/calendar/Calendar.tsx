@@ -72,6 +72,7 @@ const setup = (
 };
 
 const Calendar = defineComponent({
+  name: 'Calender',
   setup,
   render() {
     return (

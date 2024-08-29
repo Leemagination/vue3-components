@@ -30,6 +30,7 @@ const setup = (props: ExtractPropTypes<typeof cardProps>, context: SetupContext<
 };
 
 const Card = defineComponent({
+  name: 'Card',
   props: cardProps,
   setup,
   render() {

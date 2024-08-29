@@ -20,6 +20,7 @@ const tagProps = {
 };
 
 const Tag = defineComponent({
+  name: 'Tag',
   props: tagProps,
   emits: ['update:checked', 'change', 'close'],
   setup(props, context) {

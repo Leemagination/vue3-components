@@ -156,7 +156,7 @@ const setup = (
 };
 
 const InputNumber = defineComponent({
-  name: 'Input',
+  name: 'InputNumber',
   props: inputProps,
   setup,
   render() {

@@ -5,7 +5,6 @@ import {
   h,
   PropType,
   provide,
-  Ref,
   ref,
   SetupContext,
   Teleport,
@@ -13,8 +12,7 @@ import {
   useModel
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
-import { getPropsValue } from '../../util';
-import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
+import { arrow, autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/vue';
 import './cascader.scss';
 import {
   cascaderEmitsList,

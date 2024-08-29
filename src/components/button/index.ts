@@ -1,8 +1,2 @@
-import { App } from 'vue';
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
-
-export default function (app: App) {
-  app.component('LeeButton', Button);
-  app.component('LeeButtonGroup', ButtonGroup);
-}
+export { default as LeeButton } from './Button';
+export { default as LeeButtonGroup } from './ButtonGroup';

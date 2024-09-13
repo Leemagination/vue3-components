@@ -1,6 +1,7 @@
 import { defineComponent, renderSlot, h } from 'vue';
-import './list.scss';
+import style from './list.scss';
 const List = defineComponent({
+  __STYLE__: style,
   name: 'List',
   props: {
     bordered: Boolean,

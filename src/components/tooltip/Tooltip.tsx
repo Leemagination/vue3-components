@@ -14,7 +14,7 @@ import {
   Transition,
   StyleValue
 } from 'vue';
-import './tooltip.scss';
+import style from './tooltip.scss';
 import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
 import { createZIndex } from '../../util/zIndex';
 import { placementPropList, triggerPropList, TriggerType } from './interface';
@@ -201,6 +201,7 @@ const setup = (props: ExtractPropTypes<typeof tooltipProps>) => {
   };
 };
 const tooltip = defineComponent({
+  __STYLE__: style,
   name: 'Tooltip',
   props: tooltipProps,
   setup,

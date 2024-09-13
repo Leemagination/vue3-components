@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, PropType } from 'vue';
-import './progress.scss';
+import style from './progress.scss';
 import { ColorConfig, ProgressStatus, ProgressType } from './interface';
 
 const progressProps = {
@@ -35,6 +35,7 @@ const progressProps = {
 };
 
 const Progress = defineComponent({
+  __STYLE__: style,
   name: 'Progress',
   props: progressProps,
   setup(props, context) {

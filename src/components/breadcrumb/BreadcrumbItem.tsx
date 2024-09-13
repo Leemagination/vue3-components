@@ -1,8 +1,9 @@
 import { defineComponent, h, PropType, renderSlot } from 'vue';
-
-import './breadcrumbItem.scss';
+import style from './breadcrumbItem.scss';
 import { MouseFunc } from '../../config/interface';
+
 const BreadcrumbItem = defineComponent({
+  __STYLE__: style,
   name: 'BreadcrumbItem',
   props: {
     href: {

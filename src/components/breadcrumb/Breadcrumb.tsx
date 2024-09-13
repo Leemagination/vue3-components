@@ -1,7 +1,8 @@
 import { defineComponent, h, renderSlot, VNodeChild } from 'vue';
+import style from './breadcrumb.scss';
 
-import './breadcrumb.scss';
 const Breadcrumb = defineComponent({
+  __STYLE__: style,
   name: 'Breadcrumb',
   render() {
     const slot = renderSlot(this.$slots, 'default');

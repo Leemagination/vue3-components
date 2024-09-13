@@ -1,6 +1,6 @@
 import { computed, defineComponent, h } from 'vue';
 
-import './loading.scss';
+import style from './loading.scss';
 const loadingProps = {
   radius: {
     type: Number,
@@ -20,6 +20,7 @@ const loadingProps = {
   }
 };
 const LoadingSvg = defineComponent({
+  __STYLE__: style,
   name: 'Loading',
   props: loadingProps,
   setup(props) {

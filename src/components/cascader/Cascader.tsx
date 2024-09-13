@@ -13,13 +13,12 @@ import {
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
 import { arrow, autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/vue';
-import './cascader.scss';
+import style from './cascader.scss';
 import {
   cascaderEmitsList,
   CascaderEmitsType,
   CascaderProvideType,
   OptionItem,
-  triggerPropList,
   TriggerType
 } from './interface';
 import ChildList from './ChildList';
@@ -220,6 +219,7 @@ const setup = (
   };
 };
 const Cascader = defineComponent({
+  __STYLE__: style,
   name: 'Cascader',
   props: cascaderProps,
   emits: cascaderEmitsList,

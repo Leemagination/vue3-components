@@ -16,7 +16,7 @@ import {
   watch
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
-import './modal.scss';
+import style from './modal.scss';
 import { modalEmits, ModalEmitType } from './interface';
 import { isComponent } from '../../util';
 
@@ -144,6 +144,7 @@ const setup = (
 };
 
 const Modal = defineComponent({
+  __STYLE__: style,
   name: 'Modal',
   props: modalProps,
   emits: modalEmits,

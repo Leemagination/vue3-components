@@ -15,7 +15,7 @@ import {
   Transition,
   StyleValue
 } from 'vue';
-import './popconfirm.scss';
+import style from './popconfirm.scss';
 import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
 import { createZIndex } from '../../util/zIndex';
 import { placementPropList, triggerPropList, TriggerType } from './interface';
@@ -220,6 +220,7 @@ const setup = (props: ExtractPropTypes<typeof popconfirmProps>) => {
   };
 };
 const Popconfirm = defineComponent({
+  __STYLE__: style,
   name: 'Popconfirm',
   props: popconfirmProps,
   setup,

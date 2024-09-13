@@ -1,5 +1,5 @@
 import { defineComponent, h, Teleport } from 'vue';
-import './notification.scss';
+import style from './notification.scss';
 import NotificationItem from './NotificationItem';
 import {
   deleteNotificationItem,
@@ -29,6 +29,7 @@ const ContainerSetup = () => {
 };
 
 const NotificationContainer = defineComponent({
+  __STYLE__: style,
   setup: ContainerSetup,
   render() {
     return (

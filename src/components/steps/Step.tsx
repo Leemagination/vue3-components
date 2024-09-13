@@ -10,7 +10,7 @@ import {
   ExtractPropTypes
 } from 'vue';
 
-import './step.scss';
+import style from './step.scss';
 import { StepsPosition, stepsPosition, Status } from './interface';
 import { MouseFunc } from '../../config/interface';
 
@@ -68,6 +68,7 @@ const setup = (props: ExtractPropTypes<typeof stepProps>) => {
   return { validPosition, direction: parentDirection, parentIndex, validStatus, handleClick };
 };
 const Step = defineComponent({
+  __STYLE__: style,
   name: 'Step',
   props: stepProps,
   setup,

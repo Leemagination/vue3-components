@@ -11,7 +11,7 @@ import {
   computed
 } from 'vue';
 
-import './checkbox.scss';
+import style from './checkbox.scss';
 import { CheckboxGroupProvideType } from './interface';
 
 const checkboxProps = {
@@ -102,6 +102,7 @@ const defaultIcon = (
 );
 
 const Checkbox = defineComponent({
+  __STYLE__: style,
   name: 'Checkbox',
   props: checkboxProps,
   emits: ['update:checked', 'change'],

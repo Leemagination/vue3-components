@@ -15,7 +15,7 @@ import {
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
-import './timePicker.scss';
+import style from './timePicker.scss';
 import NumList from './NumList';
 
 const timeIcon = (
@@ -181,6 +181,7 @@ const setup = (props: ExtractPropTypes<typeof timePickerProps>) => {
 };
 
 const TimePicker = defineComponent({
+  __STYLE__: style,
   name: 'TimePicker',
   props: timePickerProps,
   emits: ['update:value'],

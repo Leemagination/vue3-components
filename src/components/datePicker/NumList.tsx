@@ -1,5 +1,5 @@
 import { computed, defineComponent, nextTick, onMounted, PropType, ref } from 'vue';
-import './numList.scss';
+import style from './numList.scss';
 function formatTimeText(val: number) {
   if (val > 9) {
     return `${val}`;
@@ -8,6 +8,7 @@ function formatTimeText(val: number) {
 }
 
 const NumList = defineComponent({
+  __STYLE__: style,
   props: {
     minNum: {
       type: Number,

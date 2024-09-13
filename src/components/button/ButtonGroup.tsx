@@ -1,7 +1,8 @@
 import { defineComponent, h, renderSlot } from 'vue';
-import './buttonGroup.scss';
+import style from './buttonGroup.scss';
 
 const ButtonGroup = defineComponent({
+  __STYLE__: style,
   name: 'ButtonGroup',
   render() {
     const { $slots } = this;

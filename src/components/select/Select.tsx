@@ -11,7 +11,7 @@ import {
   ref,
   StyleValue
 } from 'vue';
-import './select.scss';
+import style from './select.scss';
 import { SelectType } from './interface';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
@@ -226,6 +226,7 @@ const setup = (
 };
 
 const Select = defineComponent({
+  __STYLE__: style,
   name: 'Select',
   props: selectProps,
   setup,

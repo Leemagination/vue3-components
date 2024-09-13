@@ -12,7 +12,7 @@ import {
   watch,
   withDirectives
 } from 'vue';
-import './tabs.scss';
+import style from './tabs.scss';
 import { NavListItem, TabKeyType } from './interface';
 
 const tabsProps = {
@@ -84,6 +84,7 @@ const setup = (props: ExtractPropTypes<typeof tabsProps>, context: SetupContext)
 };
 
 const Tabs = defineComponent({
+  __STYLE__: style,
   name: 'Tabs',
   props: tabsProps,
   setup,

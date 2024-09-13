@@ -12,7 +12,7 @@ import {
 } from 'vue';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
-import './datePicker.scss';
+import style from './datePicker.scss';
 import CalendarPicker from './CalendarPicker';
 import dayjs, { Dayjs } from 'dayjs';
 import TimePicker from './TimePicker';
@@ -229,6 +229,7 @@ const setup = (props: ExtractPropTypes<typeof DatePickerProps>) => {
 };
 
 const DatePicker = defineComponent({
+  __STYLE__: style,
   name: 'DatePicker',
   props: DatePickerProps,
   setup,

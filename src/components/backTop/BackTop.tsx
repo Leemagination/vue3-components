@@ -10,7 +10,7 @@ import {
   Transition,
   watch
 } from 'vue';
-import './backTop.scss';
+import style from './backTop.scss';
 
 const backTopProps = {
   visibleTop: {
@@ -56,6 +56,7 @@ const defaultIcon = (
 );
 
 const BackTop = defineComponent({
+  __STYLE__: style,
   name: 'BackTop',
   props: backTopProps,
   setup(props) {

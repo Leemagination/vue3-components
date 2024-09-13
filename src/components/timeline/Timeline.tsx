@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, PropType, provide, renderSlot, VNode } from 'vue';
 
-import './timeline.scss';
+import style from './timeline.scss';
 import { getPropsValue } from '../../util';
 import {
   timelineDirection,
@@ -19,6 +19,7 @@ const timelinePros = {
   }
 };
 const Timeline = defineComponent({
+  __STYLE__: style,
   name: 'Timeline',
   props: timelinePros,
   setup(props) {

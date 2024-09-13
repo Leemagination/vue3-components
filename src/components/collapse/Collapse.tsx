@@ -5,11 +5,10 @@ import {
   h,
   Fragment,
   renderSlot,
-  ref,
   provide,
   shallowRef
 } from 'vue';
-import './collapse.scss';
+import style from './collapse.scss';
 import { CollapseItem, CollapseProvideType } from './interface';
 const collapseProps = {
   accordion: {
@@ -43,6 +42,7 @@ const setup = (props: ExtractPropTypes<typeof collapseProps>, context: SetupCont
 };
 
 const Collapse = defineComponent({
+  __STYLE__: style,
   name: 'Collapse',
   props: collapseProps,
   emit: ['item-change'],

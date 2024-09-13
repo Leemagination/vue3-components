@@ -5,4 +5,3 @@ dist-ssr
 *.local
 src/components/todo.md
 .idea
-package-lock.json

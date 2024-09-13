@@ -13,7 +13,7 @@ import {
   computed
 } from 'vue';
 
-import './radio.scss';
+import style from './radio.scss';
 import { RadioGroupProvideType } from './interface';
 
 const nameMap: { [p: string]: { ref: Ref<boolean>; value: string | number | undefined }[] } = {};
@@ -95,6 +95,7 @@ const setup = (props: ExtractPropTypes<typeof radioProps>, context: SetupContext
 };
 
 const Radio = defineComponent({
+  __STYLE__: style,
   name: 'Radio',
   props: radioProps,
   emits: ['update:value', 'update:checked', 'change'],

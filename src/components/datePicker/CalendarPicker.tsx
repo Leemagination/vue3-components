@@ -8,7 +8,7 @@ import {
   SetupContext,
   watch
 } from 'vue';
-import './calendarPicker.scss';
+import style from './calendarPicker.scss';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateText from './DateText';
@@ -142,6 +142,7 @@ const setup = (
 };
 
 const CalendarPicker = defineComponent({
+  __STYLE__: style,
   props: calendarProps,
   emits: calendarPickerEmits,
   setup,

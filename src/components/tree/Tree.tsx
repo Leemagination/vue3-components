@@ -12,7 +12,7 @@ import {
   watch
 } from 'vue';
 import { CheckboxType, TreeDataItem, TreeNodeDataItem } from './interface';
-import './tree.scss';
+import style from './tree.scss';
 import TreeCheckbox from './TreeCheckbox';
 
 const arrowIcon = (
@@ -192,16 +192,6 @@ const setup = (
     }
   }
 
-  // function emitCheckKeys() {
-  //   const keys = displayList.value.filter(
-  //     (item) => item.checkStatus.value === CheckboxType.allCheck
-  //   );
-  //   context.emit(
-  //     'update:checkKeys',
-  //     keys.map((item) => item.key)
-  //   );
-  // }
-
   function changeItemCheckStatus(item: TreeNodeDataItem, index: number) {
     if (item.checkStatus.value === CheckboxType.allCheck) {
       if (item.children && item.children.length) {
@@ -282,8 +272,6 @@ const setup = (
       }
       return;
     }
-
-    //changeItemCheckStatus(item, index, true);
   }
 
   function handleItemClick(item: TreeNodeDataItem, index: number) {
@@ -338,6 +326,7 @@ const setup = (
 };
 
 const Tree = defineComponent({
+  __STYLE__: style,
   name: 'Tree',
   props: treeProps,
   emits: ['update:checkKeys'],

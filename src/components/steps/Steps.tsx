@@ -8,7 +8,7 @@ import {
   renderSlot
 } from 'vue';
 
-import './steps.scss';
+import style from './steps.scss';
 import { getPropsValue } from '../../util';
 import { StepsDirection, stepsDirection, StepsPosition, stepsPosition } from './interface';
 const stepsPros = {
@@ -26,6 +26,7 @@ const stepsPros = {
   }
 };
 const Steps = defineComponent({
+  __STYLE__: style,
   name: 'Steps',
   props: stepsPros,
   setup(props) {

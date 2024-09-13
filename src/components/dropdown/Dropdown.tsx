@@ -15,7 +15,7 @@ import {
 import { createZIndex } from '../../util/zIndex';
 import { getPropsValue } from '../../util';
 import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
-import './dropdown.scss';
+import style from './dropdown.scss';
 import {
   dropdownEmitsList,
   DropdownEmitsType,
@@ -150,6 +150,7 @@ const setup = (
   };
 };
 const Dropdown = defineComponent({
+  __STYLE__: style,
   name: 'Dropdown',
   props: dropdownProps,
   emits: dropdownEmitsList,
@@ -163,7 +164,6 @@ const Dropdown = defineComponent({
     let targetSlot = null;
     if (instance.$slots.default) {
       const triggerSlots = instance.$slots?.default();
-      console.log(triggerSlots);
       if (triggerSlots?.length) {
         targetSlot = triggerSlots[0];
         if (!targetSlot?.props) {

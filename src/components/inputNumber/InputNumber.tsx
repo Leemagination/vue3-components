@@ -10,7 +10,7 @@ import {
   computed,
   watch
 } from 'vue';
-import './inputNumber.scss';
+import style from './inputNumber.scss';
 import { InputNumberEmit } from './interface';
 
 const inputProps = {
@@ -156,6 +156,7 @@ const setup = (
 };
 
 const InputNumber = defineComponent({
+  __STYLE__: style,
   name: 'InputNumber',
   props: inputProps,
   setup,

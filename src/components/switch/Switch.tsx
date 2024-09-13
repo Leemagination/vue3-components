@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, PropType, ref, watch } from 'vue';
 
-import './switch.scss';
+import style from './switch.scss';
 import Loading from '../loading/Loading';
 import { MouseFunc } from '../../config/interface';
 const switchProps = {
@@ -18,6 +18,7 @@ const switchProps = {
   onClick: Function as PropType<MouseFunc>
 };
 const Switch = defineComponent({
+  __STYLE__: style,
   name: 'Switch',
   props: switchProps,
   emits: ['update:value', 'change'],

@@ -10,7 +10,7 @@ import {
   ComponentPublicInstance
 } from 'vue';
 
-import './timelineItem.scss';
+import style from './timelineItem.scss';
 import { TimelinePosition } from './interface';
 import { stepsPosition } from '../steps/interface';
 const timelineItemProps = {
@@ -49,6 +49,7 @@ const setup = (props: ExtractPropTypes<typeof timelineItemProps>) => {
   return { validPosition, direction: parentDirection };
 };
 const TimelineItem = defineComponent({
+  __STYLE__: style,
   name: 'TimelineItem',
   props: timelineItemProps,
   setup,

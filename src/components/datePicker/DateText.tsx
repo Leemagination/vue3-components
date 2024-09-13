@@ -17,7 +17,7 @@ import { Dayjs } from 'dayjs';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
 import NumList from './NumList';
-import './dateText.scss';
+import style from './dateText.scss';
 import { dateTextEmits, DateTextEmitsType } from './interface';
 const dateTextProps = {
   currentDate: {
@@ -100,11 +100,9 @@ const setup = (
   );
 
   function setYear(val: number) {
-    console.log(val);
     context.emit('yearClick', val);
   }
   function setMonth(val: number) {
-    console.log(val);
     context.emit('monthClick', val - 1);
   }
 
@@ -126,6 +124,7 @@ const setup = (
 };
 
 const DateText = defineComponent({
+  __STYLE__: style,
   name: 'DateText',
   props: dateTextProps,
   emits: dateTextEmits,

@@ -1,5 +1,5 @@
 import { defineComponent, h, Teleport } from 'vue';
-import './message.scss';
+import style from './message.scss';
 import MessageItem from './MessageItem';
 import {
   deleteMessageItem,
@@ -29,6 +29,7 @@ const ContainerSetup = () => {
 };
 
 const MessageContainer = defineComponent({
+  __STYLE__: style,
   setup: ContainerSetup,
   render() {
     return (

@@ -18,7 +18,7 @@ import {
 import { createZIndex } from '../../util/zIndex';
 import { drawerEmits, DrawerEmitType, placementList, PlacementType } from './interface';
 import { getPropsValue, isComponent } from '../../util';
-import './drawer.scss';
+import style from './drawer.scss';
 
 const closeIcon = (
   <svg viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -162,6 +162,7 @@ const setup = (
 };
 
 const Drawer = defineComponent({
+  __STYLE__: style,
   name: 'Drawer',
   props: drawerProps,
   emits: drawerEmits,

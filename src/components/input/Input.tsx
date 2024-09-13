@@ -10,7 +10,7 @@ import {
   computed,
   watch
 } from 'vue';
-import './input.scss';
+import style from './input.scss';
 import { InputEmit } from './interface';
 
 const inputProps = {
@@ -97,6 +97,7 @@ const setup = (
 };
 
 const Input = defineComponent({
+  __STYLE__: style,
   name: 'Input',
   props: inputProps,
   setup,

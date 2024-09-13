@@ -11,11 +11,11 @@ import {
   useModel,
   watch
 } from 'vue';
-const StarIcon = defineAsyncComponent(() => import('./StarIcon'));
-const HeartIcon = defineAsyncComponent(() => import('./HeartIcon'));
-const CupIcon = defineAsyncComponent(() => import('./CupIcon'));
-const FireIcon = defineAsyncComponent(() => import('./FireIcon'));
-import './rate.scss';
+import StarIcon from './StarIcon';
+import HeartIcon from './HeartIcon';
+import CupIcon from './CupIcon';
+import FireIcon from './FireIcon';
+import style from './rate.scss';
 import { JSX } from 'vue/jsx-runtime';
 const iconMap: { [k: string]: JSX.Element } = {
   star: StarIcon,
@@ -94,6 +94,7 @@ const setup = (props: ExtractPropTypes<typeof rateProps>, context: SetupContext<
 };
 
 const Rate = defineComponent({
+  __STYLE__: style,
   name: 'Rate',
   props: rateProps,
   setup,

@@ -9,7 +9,7 @@ import {
   Slots,
   watch
 } from 'vue';
-import './slider.scss';
+import style from './slider.scss';
 
 import { StepSlot, ValidSlots } from './interface';
 const sliderProps = {
@@ -33,6 +33,7 @@ const sliderProps = {
   }
 };
 const Slider = defineComponent({
+  __STYLE__: style,
   name: 'Slider',
   props: sliderProps,
   emits: ['update:value', 'change'],

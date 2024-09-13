@@ -1,6 +1,6 @@
 import { defineComponent, h, PropType, Fragment, ref } from 'vue';
-import '/src/assets/iconfont.css';
-import './alert.scss';
+import '../../assets/iconfont.css';
+import style from './alert.scss';
 import { AlertType } from './interface';
 
 const alertProps = {
@@ -33,6 +33,7 @@ const iconMap = {
   error: 'close-circle-fill'
 };
 const Alert = defineComponent({
+  __STYLE__: style,
   name: 'Alert',
   props: alertProps,
   emits: ['close'],

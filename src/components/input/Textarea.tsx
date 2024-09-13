@@ -12,7 +12,7 @@ import {
   CSSProperties,
   watch
 } from 'vue';
-import './textarea.scss';
+import style from './textarea.scss';
 
 import { AutoSize, InputEmit } from './interface';
 const inputProps = {
@@ -114,6 +114,7 @@ const setup = (
 };
 
 const Textarea = defineComponent({
+  __STYLE__: style,
   name: 'Textarea',
   props: inputProps,
   setup,

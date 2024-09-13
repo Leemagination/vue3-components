@@ -12,7 +12,7 @@ import {
   Transition,
   StyleValue
 } from 'vue';
-import './pagination.scss';
+import style from './pagination.scss';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
 const leftArrow = (
@@ -275,6 +275,7 @@ const setup = (props: ExtractPropTypes<typeof paginationProps>) => {
 };
 
 const Pagination = defineComponent({
+  __STYLE__: style,
   name: 'Pagination',
   props: paginationProps,
   setup,

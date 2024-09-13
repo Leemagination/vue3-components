@@ -10,7 +10,7 @@ import {
   lineAlignMap
 } from './interface';
 
-import './divider.scss';
+import style from './divider.scss';
 import { getPropsValue } from '../../util';
 const dividerProps = {
   gradual: Boolean,
@@ -54,6 +54,7 @@ const dividerProps = {
 };
 
 const Divider = defineComponent({
+  __STYLE__: style,
   name: 'Divider',
   props: dividerProps,
   setup(props) {

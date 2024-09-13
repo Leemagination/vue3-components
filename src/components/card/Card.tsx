@@ -1,5 +1,5 @@
 import { defineComponent, ExtractPropTypes, h, nextTick, ref, renderSlot, SetupContext } from 'vue';
-import './card.scss';
+import style from './card.scss';
 
 const cardProps = {
   title: String,
@@ -30,6 +30,7 @@ const setup = (props: ExtractPropTypes<typeof cardProps>, context: SetupContext<
 };
 
 const Card = defineComponent({
+  __STYLE__: style,
   name: 'Card',
   props: cardProps,
   setup,

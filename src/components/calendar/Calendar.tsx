@@ -1,5 +1,5 @@
 import { computed, defineComponent, ExtractPropTypes, h, ref, SetupContext } from 'vue';
-import './calendar.scss';
+import style from './calendar.scss';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 
@@ -72,6 +72,7 @@ const setup = (
 };
 
 const Calendar = defineComponent({
+  __STYLE__: style,
   name: 'Calender',
   setup,
   render() {

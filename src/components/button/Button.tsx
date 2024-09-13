@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, PropType, ref, renderSlot, Fragment } from 'vue';
 
-import './button.scss';
+import style from './button.scss';
 import { buttonSize, ButtonSize, buttonType, ButtonType } from './interface';
 import Loading from '../loading/Loading';
 import { getPropsValue } from '../../util';
@@ -22,6 +22,7 @@ const buttonProps = {
 };
 
 const Button = defineComponent({
+  __STYLE__: style,
   name: 'Button',
   props: buttonProps,
   setup(props) {

@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, PropType, ref, renderSlot, watch } from 'vue';
-import './tag.scss';
+import style from './tag.scss';
 
 import { MouseFunc } from '../../config/interface';
 import { CustomColor, tagType, TagType } from './interface';
@@ -20,6 +20,7 @@ const tagProps = {
 };
 
 const Tag = defineComponent({
+  __STYLE__: style,
   name: 'Tag',
   props: tagProps,
   emits: ['update:checked', 'change', 'close'],

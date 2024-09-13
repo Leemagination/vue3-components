@@ -15,7 +15,7 @@ import {
   Transition,
   StyleValue
 } from 'vue';
-import './popover.scss';
+import style from './popover.scss';
 import { arrow, autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/vue';
 import { createZIndex } from '../../util/zIndex';
 import { placementPropList, triggerPropList, TriggerType } from './interface';
@@ -186,6 +186,7 @@ const setup = (props: ExtractPropTypes<typeof popoverProps>) => {
   };
 };
 const Popover = defineComponent({
+  __STYLE__: style,
   name: 'Popover',
   props: popoverProps,
   setup,

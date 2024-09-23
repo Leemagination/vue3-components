@@ -13,6 +13,9 @@
     "vue3"
   ],
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "dependencies": {
     "@floating-ui/vue": "^1.0.6",

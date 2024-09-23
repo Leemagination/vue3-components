@@ -1,13 +1,25 @@
 {
-  "version": "0.0.0",
+  "name": "lee-vue3-components",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "rollup -c",
+    "build": "rimraf dist && rollup -c",
     "serve": "vite preview"
   },
+  "description": "从零搭建一个vue3组件库,用于学习vue3、发布npm包、rollup构建",
+  "author": "leemagination",
+  "keywords": [
+    "component library",
+    "vue3"
+  ],
+  "main": "dist/index.js",
+  "license": "MIT",
   "dependencies": {
     "@floating-ui/vue": "^1.0.6",
     "dayjs": "^1.11.11",
+    "vue": "^3.4.21"
+  },
+  "peerDependencies": {
     "vue": "^3.4.21"
   },
   "devDependencies": {

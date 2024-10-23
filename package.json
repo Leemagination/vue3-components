@@ -2,7 +2,7 @@
   "name": "lee-vue3-components",
   "version": "0.1.0-beta.1",
   "scripts": {
-    "dev": "vite",
+    "dev": "rimraf dist && rollup -c && vite",
     "build": "rimraf dist && rollup -c",
     "serve": "vite preview"
   },
@@ -12,6 +12,7 @@
     "component library",
     "vue3"
   ],
+  "types": "dist/types/components/index.d.ts",
   "main": "dist/index.js",
   "files": [
     "dist"

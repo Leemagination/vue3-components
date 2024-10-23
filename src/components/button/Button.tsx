@@ -51,7 +51,7 @@ const Button = defineComponent({
       buttonRef.value.classList.remove(cssName);
 
       setTimeout(() => {
-        !disabledStatus.value && buttonRef.value.classList.add(cssName);
+        !isLoading.value && !disabledStatus.value && buttonRef.value.classList.add(cssName);
       });
     }
     function handleCLick(e: MouseEvent): void {

@@ -16,7 +16,7 @@ const loadingProps = {
   },
   color: {
     type: String,
-    default: '#1184f5'
+    default: 'currentColor'
   }
 };
 const LoadingSvg = defineComponent({

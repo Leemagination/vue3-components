@@ -183,8 +183,6 @@ $buttonType: (
 }
 
 .lee-loading-button {
-  pointer-events: none;
-
   &:before {
     position: absolute;
     top: -1px;

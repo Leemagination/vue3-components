@@ -269,18 +269,18 @@ $buttonType: (
   }
 
   .lee-#{$typeName}-dash-button {
-    color: $ghostColor;
+    color: $baseColor;
     background-color: transparent;
-    border: 1px dashed $ghostColor;
+    border: 1px dashed $baseBdColor;
 
     &:hover {
-      color: $ghostHoverColor;
-      border: 1px dashed $ghostHoverColor;
+      color: $hoverColor;
+      border: 1px dashed $activeBdColor;
     }
 
     &:active {
-      color: $ghostActiveColor;
-      border: 1px dashed $ghostActiveColor;
+      color: $hoverColor;
+      border: 1px dashed $activeColor;
     }
   }
 

@@ -51,6 +51,12 @@ $buttonType: (
       $primaryHoverColor,
       $primaryActiveColor
     ),
+    dash: (
+      $blackColor,
+      $primaryHoverColor,
+      $primaryActiveColor,
+      $defaultBorderColor
+    ),
     shadow: $primaryShadowColor
   ),
   primary: (
@@ -73,6 +79,12 @@ $buttonType: (
       $primaryColor,
       $primaryHoverColor,
       $primaryActiveColor
+    ),
+    dash: (
+      $primaryColor,
+      $primaryHoverColor,
+      $primaryActiveColor,
+      $primaryColor
     ),
     shadow: $primaryShadowColor
   ),
@@ -97,6 +109,12 @@ $buttonType: (
       $dangerHoverColor,
       $dangerActiveColor
     ),
+    dash: (
+      $dangerColor,
+      $dangerHoverColor,
+      $dangerActiveColor,
+      $dangerColor
+    ),
     shadow: $dangerShadowColor
   ),
   wrong: (
@@ -120,6 +138,12 @@ $buttonType: (
       $wrongHoverColor,
       $wrongActiveColor
     ),
+    dash: (
+      $wrongColor,
+      $wrongHoverColor,
+      $wrongActiveColor,
+      $wrongColor
+    ),
     shadow: $wrongShadowColor
   ),
   success: (
@@ -142,6 +166,12 @@ $buttonType: (
       $successColor,
       $successHoverColor,
       $successActiveColor
+    ),
+    dash: (
+      $successColor,
+      $successHoverColor,
+      $successActiveColor,
+      $successColor
     ),
     shadow: $successShadowColor
   )
@@ -226,6 +256,11 @@ $buttonType: (
   $ghostHoverColor: nth(map-get($colors, ghost), 2);
   $ghostActiveColor: nth(map-get($colors, ghost), 3);
 
+  $dashColor: nth(map-get($colors, dash), 1);
+  $dashHoverColor: nth(map-get($colors, dash), 2);
+  $dashActiveColor: nth(map-get($colors, dash), 3);
+  $dashBdColor: nth(map-get($colors, dash), 4);
+
   $shadowColor: map-get($colors, shadow);
 
   .lee-#{$typeName}-button {
@@ -269,18 +304,18 @@ $buttonType: (
   }
 
   .lee-#{$typeName}-dash-button {
-    color: $baseColor;
+    color: $dashColor;
     background-color: transparent;
-    border: 1px dashed $baseBdColor;
+    border: 1px dashed $dashBdColor;
 
     &:hover {
-      color: $hoverColor;
-      border: 1px dashed $activeBdColor;
+      color: $dashHoverColor;
+      border: 1px dashed $dashHoverColor;
     }
 
     &:active {
-      color: $hoverColor;
-      border: 1px dashed $activeColor;
+      color: $dashActiveColor;
+      border: 1px dashed $dashActiveColor;
     }
   }
 

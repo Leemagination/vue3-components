@@ -1,6 +1,6 @@
 {
   "name": "lee-vue3-components",
-  "version": "0.1.0-beta.3",
+  "version": "0.1.0-beta.4",
   "scripts": {
     "dev": "rimraf dist && rollup -c && vite",
     "build": "rimraf dist && rollup -c",

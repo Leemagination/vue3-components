@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import Demo from './demo.vue';
-import myComponent from '../dist';
+import myComponent from '../src/components/index';
 
 const app = createApp(Demo);
 app.use(myComponent);

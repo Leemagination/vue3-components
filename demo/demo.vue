@@ -6,16 +6,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import {LeeButton} from '../dist/index';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    LeeButton
-  }
-})
+<script lang="ts" setup>
+import {LeeButton} from '../src/components';
 </script>
 
 <style>

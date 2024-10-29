@@ -76,8 +76,8 @@ const BackTop = defineComponent({
       return window;
     });
 
-    watch(listenerTarget, () => {
-      removeScrollListener();
+    watch(listenerTarget, (newTarget, oldTarget) => {
+      removeScrollListener(oldTarget);
       addScrollListener();
     });
 
@@ -104,7 +104,11 @@ const BackTop = defineComponent({
       listenerTarget.value.addEventListener('scroll', scrollHandle);
     }
 
-    function removeScrollListener() {
+    function removeScrollListener(target?: HTMLElement | Window) {
+      if (target) {
+        target.removeEventListener('scroll', scrollHandle);
+        return;
+      }
       listenerTarget.value.removeEventListener('scroll', scrollHandle);
     }
 

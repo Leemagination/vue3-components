@@ -13,19 +13,19 @@ const BreadcrumbItem = defineComponent({
     onClick: Function as PropType<MouseFunc>
   },
   setup(props) {
-    function handleCLick(e: MouseEvent): void {
+    function handleClick(e: MouseEvent): void {
       const { onClick } = props;
       onClick && onClick(e);
     }
     return {
-      handleCLick
+      handleClick
     };
   },
   render() {
     const { $slots } = this;
     const slot = renderSlot($slots, 'default');
     return (
-      <span class={['lee-breadcrumb-item']} onClick={(e) => this.handleCLick(e)}>
+      <span class={['lee-breadcrumb-item']} onClick={(e) => this.handleClick(e)}>
         {this.href === null ? slot : <a href={this.href}>{slot}</a>}
       </span>
     );

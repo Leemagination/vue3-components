@@ -14,13 +14,7 @@ import {
 import { createZIndex } from '../../util/zIndex';
 import { arrow, autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/vue';
 import style from './cascader.scss';
-import {
-  cascaderEmitsList,
-  CascaderEmitsType,
-  CascaderProvideType,
-  OptionItem,
-  TriggerType
-} from './interface';
+import { cascaderEmitsList, CascaderEmitsType, CascaderProvideType, OptionItem } from './interface';
 import ChildList from './ChildList';
 import ClearIcon from './clearIcon';
 
@@ -53,11 +47,7 @@ const cascaderProps = {
     type: Object as PropType<Array<OptionItem> | undefined>,
     default: undefined
   },
-  disabled: Boolean,
-  trigger: {
-    type: String as PropType<TriggerType>,
-    default: 'hover'
-  }
+  disabled: Boolean
 };
 
 const setup = (

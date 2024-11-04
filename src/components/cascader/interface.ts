@@ -16,10 +16,6 @@ export const placementPropList: Placement[] = [
   'left-end'
 ];
 
-export type TriggerType = 'click' | 'hover';
-
-export const triggerPropList: TriggerType[] = ['click', 'hover'];
-
 export type OptionItem = {
   text?: string;
   key?: number | string;

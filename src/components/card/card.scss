@@ -49,12 +49,14 @@ $borderColor: rgb(239, 239, 245);
 .lee-card-content {
   box-sizing: border-box;
   padding: 0 24px 20px;
+  width: 100%;
   &:first-child {
     padding-top: 20px;
   }
 }
 
 .lee-card-footer {
+  width: 100%;
   box-sizing: border-box;
   padding: 0 24px 20px;
   &:first-child {

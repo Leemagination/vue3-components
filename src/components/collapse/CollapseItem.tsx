@@ -24,10 +24,6 @@ const collapseProps = {
   defaultExpanded: {
     type: Boolean,
     default: false
-  },
-  collect: {
-    type: String,
-    default: () => []
   }
 };
 const setup = (props: ExtractPropTypes<typeof collapseProps>, context: SetupContext) => {
@@ -51,10 +47,12 @@ const setup = (props: ExtractPropTypes<typeof collapseProps>, context: SetupCont
   function setExpandedHeight(el: Element) {
     (el as HTMLElement).style.maxHeight = `${el.scrollHeight}px`;
     (el as HTMLElement).style.opacity = '1';
+    (el as HTMLElement).style.color = '';
   }
   function setShrinkHeight(el: Element) {
     (el as HTMLElement).style.maxHeight = '0';
     (el as HTMLElement).style.opacity = '0';
+    (el as HTMLElement).style.color = 'transparent';
   }
   function removeTransitionStyle(el: Element) {
     (el as HTMLElement).style.maxHeight = '';

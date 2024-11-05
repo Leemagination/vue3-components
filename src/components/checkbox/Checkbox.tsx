@@ -17,9 +17,7 @@ import { CheckboxGroupProvideType } from './interface';
 const checkboxProps = {
   checked: Boolean,
   value: [String, Number],
-  disabled: Boolean,
-  label: String,
-  name: String
+  disabled: Boolean
 };
 
 const setup = (props: ExtractPropTypes<typeof checkboxProps>, context: SetupContext) => {

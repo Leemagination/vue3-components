@@ -133,7 +133,11 @@ const DateText = defineComponent({
     return (
       <>
         <div class="lee-calendar-picker-header__current-date">
-          <span ref="targetRef" onClick={() => this.handlePickerVisible()}>
+          <span
+            ref="targetRef"
+            class="lee-calendar-picker-header__current-date-text"
+            onClick={() => this.handlePickerVisible()}
+          >
             {this.currentDate.format('YYYY年MM月')}
           </span>
         </div>

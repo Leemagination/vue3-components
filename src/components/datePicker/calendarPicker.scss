@@ -23,6 +23,11 @@ $borderColor: #dadada;
       flex: 1;
       justify-content: center;
       display: inline-flex;
+      &-text:hover {
+        padding: 0 6px;
+        background: rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+      }
     }
   }
   .lee-calendar-picker-row {

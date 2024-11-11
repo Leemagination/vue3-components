@@ -147,7 +147,7 @@ const Divider = defineComponent({
     }
     if (this.direction === 'vertical') {
       customLineStyle.width = `${this.width}px`;
-      customLineStyle.lineHeight = `${this.verticalHeight}`;
+      customLineStyle.height = `${this.verticalHeight}`;
       if (this.gradual) {
         customLineStyle.background = `linear-gradient(to bottom,transparent,${this.color} ${
           GRADUAL_DEGREE * 5
@@ -162,7 +162,9 @@ const Divider = defineComponent({
               class={[`lee-${this.direction}-divider-left-line`]}
               style={this.lineProportion.left}
             ></div>
-            <div class={['lee-divider-title']}>{slot}</div>
+            {this.direction === 'horizontal' ? (
+              <div class={['lee-divider-title']}>{slot}</div>
+            ) : null}
             <div
               class={[`lee-${this.direction}-divider-right-line`]}
               style={this.lineProportion.right}

@@ -30,7 +30,7 @@ const dividerProps = {
     }
   },
   verticalHeight: {
-    type: Number,
+    type: [Number, String],
     default: 1
   },
   horizontalLineAlign: {
@@ -147,7 +147,7 @@ const Divider = defineComponent({
     }
     if (this.direction === 'vertical') {
       customLineStyle.width = `${this.width}px`;
-      customLineStyle.height = `${this.verticalHeight}`;
+      customLineStyle.lineHeight = `${this.verticalHeight}`;
       if (this.gradual) {
         customLineStyle.background = `linear-gradient(to bottom,transparent,${this.color} ${
           GRADUAL_DEGREE * 5

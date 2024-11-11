@@ -132,6 +132,9 @@ const Divider = defineComponent({
     const customLineStyle: DivideLineStyle = {};
     const customDividerStyle: DivideDividerStyle = {};
     const GRADUAL_DEGREE = 4;
+    if (this.color) {
+      customLineStyle.background = this.color;
+    }
     if (this.direction === 'horizontal') {
       customLineStyle.width = `${this.horizontalLength}%`;
       customDividerStyle.justifyContent = lineAlignMap[this.horizontalLineAlign];
@@ -144,10 +147,12 @@ const Divider = defineComponent({
     }
     if (this.direction === 'vertical') {
       customLineStyle.width = `${this.width}px`;
-      customLineStyle.background = `linear-gradient(to bottom,transparent,${this.color} ${
-        GRADUAL_DEGREE + 4
-      }%,${this.color} ${100 - 4 - GRADUAL_DEGREE}%,transparent)`;
       customLineStyle.lineHeight = `${this.verticalHeight}`;
+      if (this.gradual) {
+        customLineStyle.background = `linear-gradient(to bottom,transparent,${this.color} ${
+          GRADUAL_DEGREE * 5
+        }%,${this.color} ${100 - 5 * GRADUAL_DEGREE}%,transparent)`;
+      }
     }
     return (
       <div class={[`lee-${this.direction}-divider`]} style={customDividerStyle}>

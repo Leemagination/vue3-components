@@ -48,6 +48,7 @@ const setup = (
   function setPropValue() {
     inputRef.value.value = props.value;
     textLength.value = props.value.length;
+    handleAutoSize();
   }
 
   onMounted(() => {
@@ -64,10 +65,11 @@ const setup = (
       return undefined;
     }
     const { minRows, maxRows } = props.autoSize;
+
     return {
       resize: 'none',
-      minHeight: `${minRows || 2}em`,
-      maxHeight: maxRows ? `${maxRows}em` : null
+      minHeight: `${(minRows || 2) * 1.2 + 0.5}em`,
+      maxHeight: maxRows ? `${maxRows * 1.2 + 0.5}em` : null
     } as CSSProperties;
   });
   const handleFocus = (e: FocusEvent) => {
@@ -83,6 +85,11 @@ const setup = (
     context.emit('update:value', inputRef.value.value);
     context.emit('change', inputRef.value.value);
 
+    handleAutoSize();
+    textLength.value = inputRef.value.value.length;
+  };
+
+  function handleAutoSize() {
     if (props.autoSize) {
       if (inputRef.value.value.length < textLength.value) {
         inputRef.value.style.overflow = 'hidden';
@@ -93,8 +100,7 @@ const setup = (
       }
       inputRef.value.style.overflow = 'auto';
     }
-    textLength.value = inputRef.value.value.length;
-  };
+  }
 
   const clearEvent = () => {
     const ev = new Event('input', { bubbles: true });

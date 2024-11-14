@@ -122,15 +122,16 @@ const setup = (
   };
 
   function addNumber() {
-    const currentNumber = typeof props.value === 'number' ? props.value : 0;
-
+    const currentNumber =
+      typeof props.value === 'number' ? props.value : Number(inputRef.value.value || 0);
     if (currentNumber < props.max) {
       emitValue(Math.min(currentNumber + props.step, props.max));
     }
   }
 
   function minusNumber() {
-    const currentNumber = typeof props.value === 'number' ? props.value : 0;
+    const currentNumber =
+      typeof props.value === 'number' ? props.value : Number(inputRef.value.value || 0);
 
     if (currentNumber > props.min) {
       emitValue(Math.max(currentNumber - props.step, props.min));

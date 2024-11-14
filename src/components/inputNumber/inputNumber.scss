@@ -38,6 +38,7 @@ $normalBorder: 1px solid #c5c5c5;
     box-shadow: 0 0 2px 2px rgba(26, 133, 255, 0.15);
   }
   &.lee-input-number-disabled {
+    pointer-events: none;
     background-color: rgb(250, 250, 250);
     color: rgba(0, 0, 0, 0.4);
   }

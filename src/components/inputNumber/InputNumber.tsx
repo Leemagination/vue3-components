@@ -55,9 +55,14 @@ const setup = (
   const inputRef = ref();
 
   function setPropValue() {
-    let target: string | number = props.value;
+    let target: string | number;
     if (typeof props.value === 'number') {
-      target = Math.min(props.value, props.max);
+      target = props.value;
+    } else {
+      target = inputRef.value.value;
+    }
+    if (typeof target === 'number') {
+      target = Math.min(target, props.max);
       target = Math.max(target, props.min);
     }
 

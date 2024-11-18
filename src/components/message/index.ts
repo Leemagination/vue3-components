@@ -1,1 +1,1 @@
-export { default as useMessage, clearAllMessage } from './useMessage';
+export { default as useMessage, clearAllMessage, setMessageConfig } from './useMessage';

@@ -100,7 +100,7 @@ export default function useNotification(config: Partial<NotificationConfig> | un
       description: config?.description || '',
       meta: config?.meta || '',
       duration,
-      closable: !!config?.closable,
+      closable: config?.closable !== false,
       key: keyCounter
     }
   ];

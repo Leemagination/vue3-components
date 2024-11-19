@@ -1,1 +1,5 @@
-export { default as useNotification, clearAllNotification } from './useNotification';
+export {
+  default as useNotification,
+  clearAllNotification,
+  setNotificationConfig
+} from './useNotification';

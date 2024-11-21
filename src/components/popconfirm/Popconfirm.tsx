@@ -35,10 +35,6 @@ const popconfirmProps = {
     type: String as PropType<TriggerType>,
     default: 'click'
   },
-  popconfirmOnHover: {
-    type: Boolean,
-    default: true
-  },
   cancelText: {
     type: String,
     default: '取消'
@@ -286,12 +282,8 @@ const Popconfirm = defineComponent({
               <div style={this.popconfirmStyle}>
                 <div
                   ref="floatRef"
-                  onMouseenter={() =>
-                    this.popconfirmOnHover ? this.mouseEventHandler(true) : null
-                  }
-                  onMouseleave={() =>
-                    this.popconfirmOnHover ? this.mouseEventHandler(false) : null
-                  }
+                  onMouseenter={() => this.mouseEventHandler(true)}
+                  onMouseleave={() => this.mouseEventHandler(false)}
                   class="lee-popconfirm-content"
                   style={this.floatingStyles}
                 >

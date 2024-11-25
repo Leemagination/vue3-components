@@ -18,6 +18,7 @@ const radioGroupProps = {
 const setup = (props: ExtractPropTypes<typeof radioGroupProps>, context: SetupContext) => {
   const disabledStatus = computed(() => props.disabled);
   const groupName = computed(() => props.name);
+  const radioValue = computed(() => props.value);
   function updateGroupValue(val: string | number | undefined) {
     context.emit('update:value', val);
   }
@@ -25,6 +26,7 @@ const setup = (props: ExtractPropTypes<typeof radioGroupProps>, context: SetupCo
   provide<RadioGroupProvideType>('radioGroupProvideKey', {
     disabledStatus,
     groupName,
+    radioValue,
     updateGroupValue
   });
   return {};

@@ -32,6 +32,16 @@ const setup = (props: ExtractPropTypes<typeof radioProps>, context: SetupContext
   const checkStatus = ref(false);
   const radioName = config?.groupName.value || props.name || 'lee-radio';
 
+  watch(
+    () => config?.radioValue?.value,
+    (val) => {
+      if (val === props.value) {
+        changeRadioStatus();
+      }
+    },
+    { immediate: true }
+  );
+
   if (nameMap[radioName]) {
     nameMap[radioName].push({
       ref: checkStatus,

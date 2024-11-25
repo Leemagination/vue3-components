@@ -22,7 +22,6 @@ const radioProps = {
   checked: Boolean,
   value: [String, Number],
   disabled: Boolean,
-  label: String,
   name: String
 };
 

@@ -5,6 +5,7 @@ import {
   defineComponent,
   ExtractPropTypes,
   h,
+  PropType,
   ref,
   renderSlot,
   SetupContext,
@@ -17,7 +18,8 @@ import CupIcon from './CupIcon';
 import FireIcon from './FireIcon';
 import style from './rate.scss';
 import { JSX } from 'vue/jsx-runtime';
-const iconMap: { [k: string]: JSX.Element } = {
+import { RateIconType } from './interface';
+const iconMap: Record<RateIconType, JSX.Element> = {
   star: StarIcon,
   heart: HeartIcon,
   cup: CupIcon,
@@ -31,7 +33,7 @@ const rateProps = {
     default: false
   },
   iconType: {
-    type: String,
+    type: String as PropType<RateIconType>,
     default: 'star'
   },
   color: {

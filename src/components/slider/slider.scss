@@ -63,3 +63,19 @@ $dragActiveColor: #0271cb;
     }
   }
 }
+
+.lee-slider--disabled {
+  .lee-slider-line {
+    opacity: 0.7;
+  }
+  .lee-slider-track,
+  .lee-slider-drag-point {
+    cursor: not-allowed;
+  }
+  .lee-slider-drag-point:hover {
+    border-color: $lineColor;
+  }
+  .lee-slider-dragging-point {
+    border-color: $lineColor;
+  }
+}

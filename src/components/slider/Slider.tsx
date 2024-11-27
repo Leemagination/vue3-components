@@ -52,6 +52,9 @@ const Slider = defineComponent({
       });
     });
     function handleDragStart(e: MouseEvent, type: 0 | 1) {
+      if (props.disabled) {
+        return;
+      }
       e.stopPropagation();
       dragging.value = type;
     }
@@ -169,6 +172,9 @@ const Slider = defineComponent({
     }
 
     function setLineValue(order: number, distance: number) {
+      if (props.disabled) {
+        return;
+      }
       const closestValue = calClosestValue(distance);
       if (lineValue.value[order] === closestValue) return;
       lineValue.value[order] = closestValue;
@@ -245,7 +251,13 @@ const Slider = defineComponent({
     const { $slots } = this;
     const validStep = this.getValidStepSlots($slots);
     return (
-      <div class={['lee-slider', validStep.length ? 'lee-slider-step-margin' : null]}>
+      <div
+        class={[
+          'lee-slider',
+          validStep.length ? 'lee-slider-step-margin' : null,
+          this.disabled ? 'lee-slider--disabled' : null
+        ]}
+      >
         <div class={['lee-slider-track']} ref="sliderTrack" onMousedown={this.handledTrackClick}>
           {this.range ? (
             <div

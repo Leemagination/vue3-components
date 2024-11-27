@@ -9,10 +9,11 @@ import {
   Transition,
   Teleport,
   ref,
-  StyleValue
+  StyleValue,
+  PropType
 } from 'vue';
 import style from './select.scss';
-import { SelectType } from './interface';
+import { FormatOptionType, SelectOptionType, SelectType } from './interface';
 import { createZIndex } from '../../util/zIndex';
 import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
 import ClearIcon from './clearIcon';
@@ -27,7 +28,7 @@ const selectProps = {
     default: '请选择'
   },
   options: {
-    type: Array,
+    type: Array as PropType<SelectOptionType[]>,
     default: () => []
   },
   multiple: Boolean,
@@ -123,7 +124,7 @@ const setup = (
     }
   }
 
-  const formatOptions = computed(() => {
+  const formatOptions = computed<FormatOptionType[]>(() => {
     if (Array.isArray(props.options)) {
       return props.options.map((item) => {
         let selected = false;
@@ -157,14 +158,15 @@ const setup = (
     return null;
   });
 
-  function handleOptionClick(item: { [p: string]: any }) {
+  function handleOptionClick(event: MouseEvent, item: FormatOptionType) {
     if (props.multiple) {
+      event.stopPropagation();
       if (Array.isArray(selectValue.value)) {
         const index = selectValue.value.findIndex((val) => val === item.value);
         if (index === -1) {
-          selectValue.value.push(item.value);
+          selectValue.value = [...selectValue.value, item.value];
         } else {
-          selectValue.value.splice(index, 1);
+          selectValue.value = selectValue.value.filter((val) => val !== item.value);
           if (selectValue.value.length === 0) {
             selectValue.value = undefined;
           }
@@ -247,7 +249,7 @@ const Select = defineComponent({
                 return (
                   <div class="lee-select-selected-item">
                     <span>{item.text}</span>
-                    <ClearIcon onClick={() => this.handleOptionClick(item)}></ClearIcon>
+                    <ClearIcon onClick={(ev) => this.handleOptionClick(ev, item)}></ClearIcon>
                   </div>
                 );
               })}
@@ -279,7 +281,7 @@ const Select = defineComponent({
                             'lee-select-option-item',
                             item.selected ? 'lee-select-option-item__selected' : null
                           ]}
-                          onClick={() => this.handleOptionClick(item)}
+                          onClick={(ev) => this.handleOptionClick(ev, item)}
                         >
                           <span>{item.text}</span>
                           {item.selected ? selectedIcon : null}

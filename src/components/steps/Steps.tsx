@@ -36,9 +36,12 @@ const Steps = defineComponent({
     const position = computed(() => {
       return getPropsValue(props.position, stepsPosition);
     });
+    const currentValue = computed(() => {
+      return props.current;
+    });
     provide('position', position.value);
     provide('direction', direction.value);
-    provide('stepCurrentIndex', props.current);
+    provide('stepCurrentIndex', currentValue);
     return { direction };
   },
   render() {

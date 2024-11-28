@@ -7,7 +7,8 @@ import {
   Fragment,
   computed,
   ComponentPublicInstance,
-  ExtractPropTypes
+  ExtractPropTypes,
+  Ref
 } from 'vue';
 
 import style from './step.scss';
@@ -44,7 +45,7 @@ const stepProps = {
 const setup = (props: ExtractPropTypes<typeof stepProps>) => {
   const parentPosition = inject('position');
   const parentDirection = inject('direction');
-  const parentIndex = inject('stepCurrentIndex') as number;
+  const parentIndex = inject('stepCurrentIndex') as Ref<number>;
   const validPosition = computed(() => {
     let position = props.position || parentPosition;
     if (!stepsPosition.includes(position)) {

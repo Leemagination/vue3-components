@@ -15,6 +15,9 @@ $cellName: 'lee-step-cell-';
     white-space: pre-line;
     word-break: break-word;
     flex: 1;
+    .lee-step-cell-title {
+      margin-right: 10px;
+    }
   }
   &-h-step-dot {
     & ~ [class*='#{$cellName}']:not(:last-child) {
@@ -51,7 +54,6 @@ $cellName: 'lee-step-cell-';
       margin-top: 4px;
     }
     &-title {
-      margin-right: 10px;
       font-weight: bold;
       white-space: nowrap;
     }

@@ -128,7 +128,7 @@ function renderHorizontal(
         </div>
         <div class={['lee-h-step-content']}>
           <div class={['lee-step-cell-title-container']}>
-            {title ? <p class={['lee-step-cell-title']}>{title}</p> : null}
+            {title ? <span class={['lee-step-cell-title']}>{title}</span> : null}
             <div class={['lee-h-step-line', `lee-${validLineStatus}-step-line`]}></div>
           </div>
           {renderCellSlot(instance)}
@@ -150,9 +150,9 @@ function renderCellSlot(
   return (
     <>
       {cell.title && direction === 'vertical' ? (
-        <p class={['lee-step-cell-title']}>{cell.title}</p>
+        <div class={['lee-step-cell-title']}>{cell.title}</div>
       ) : null}
-      {cell?.content ? <p class={['lee-step-cell-content']}>{cell.content}</p> : null}
+      {cell?.content ? <span class={['lee-step-cell-content']}>{cell.content}</span> : null}
     </>
   );
 }

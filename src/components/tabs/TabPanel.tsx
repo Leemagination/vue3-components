@@ -1,10 +1,10 @@
-import { defineComponent, renderSlot } from 'vue';
+import { defineComponent, PropType, renderSlot } from 'vue';
 
 const TabPanel = defineComponent({
   name: 'TabPanel',
   props: {
     displayType: {
-      type: String,
+      type: String as PropType<'if' | 'show'>,
       default: 'if'
     },
     tabKey: {

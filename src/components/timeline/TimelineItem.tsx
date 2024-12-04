@@ -120,9 +120,9 @@ function renderCellSlot(
   }
   return (
     <>
-      {cell?.title ? <p class={['lee-timeline-cell-title']}>{cell.title}</p> : null}
-      {cell?.content ? <p class={['lee-timeline-cell-content']}>{cell.content}</p> : null}
-      {cell?.time ? <p class={['lee-timeline-cell-time']}>{cell.time}</p> : null}
+      {cell?.title ? <div class={['lee-timeline-cell-title']}>{cell.title}</div> : null}
+      {cell?.content ? <div class={['lee-timeline-cell-content']}>{cell.content}</div> : null}
+      {cell?.time ? <div class={['lee-timeline-cell-time']}>{cell.time}</div> : null}
     </>
   );
 }

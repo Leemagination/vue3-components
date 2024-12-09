@@ -246,15 +246,14 @@ const setup = (
       item.checkStatus.value === CheckboxType.uncheck ||
       item.checkStatus.value === CheckboxType.halfCheck
     ) {
+      item.checkStatus.value = CheckboxType.allCheck;
       if (!props.cascade) {
         checkKeysArr.value?.push(item.key);
       } else {
-        if (item.children?.length) {
-          item.checkStatus.value = CheckboxType.allCheck;
-          changeItemCheckStatus(item, index);
-        } else {
+        if (!item.children?.length) {
           checkKeysArr.value?.push(item.key);
         }
+        changeItemCheckStatus(item, index);
       }
       return;
     }

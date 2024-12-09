@@ -53,6 +53,13 @@ $defaultBorderColor: #dedede;
   flex-shrink: 0;
 }
 
+.lee-time-picker-clear-icon {
+  width: 16px;
+  height: 16px;
+  color: $defaultBorderColor;
+  flex-shrink: 0;
+}
+
 .lee-time-picker-content {
   box-sizing: border-box;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);

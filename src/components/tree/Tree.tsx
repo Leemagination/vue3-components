@@ -196,6 +196,7 @@ const setup = (
     if (item.checkStatus.value === CheckboxType.allCheck) {
       if (item.children && item.children.length) {
         const parentLevel = displayList.value[index].__TREE_LEVEL__;
+        const keys = [];
         for (let i = index + 1; i < displayList.value.length; i++) {
           const child = displayList.value[i];
           if (parentLevel >= child.__TREE_LEVEL__) {
@@ -205,12 +206,12 @@ const setup = (
           if (checkStatusRef.value !== CheckboxType.allCheck) {
             checkStatusRef.value = CheckboxType.allCheck;
             if (!child.children?.length) {
-              checkKeysArr.value.push(child.key);
+              keys.push(child.key);
             }
           }
         }
+        checkKeysArr.value = [...checkKeysArr.value, ...keys];
       }
-
       changeParentCheck(index);
 
       return;
@@ -248,10 +249,18 @@ const setup = (
     ) {
       item.checkStatus.value = CheckboxType.allCheck;
       if (!props.cascade) {
-        checkKeysArr.value?.push(item.key);
+        if (Array.isArray(checkKeysArr.value)) {
+          checkKeysArr.value = [...checkKeysArr.value, item.key];
+        } else {
+          checkKeysArr.value = [item.key];
+        }
       } else {
         if (!item.children?.length) {
-          checkKeysArr.value?.push(item.key);
+          if (Array.isArray(checkKeysArr.value)) {
+            checkKeysArr.value = [...checkKeysArr.value, item.key];
+          } else {
+            checkKeysArr.value = [item.key];
+          }
         }
         changeItemCheckStatus(item, index);
       }

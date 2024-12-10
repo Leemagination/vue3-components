@@ -112,7 +112,7 @@ const setup = (
         });
       }
     },
-    { deep: true }
+    { deep: true, immediate: true }
   );
 
   function changeParentCheck(index: number) {

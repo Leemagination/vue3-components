@@ -1,6 +1,8 @@
 import typescript from "@rollup/plugin-typescript";
 import vue from "@vitejs/plugin-vue-jsx"
-import postcss from "./plugins/rollup-plugin-postcss.js";
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const postcss = require('./plugins/rollup-plugin-postcss.cjs')
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';

@@ -4,6 +4,7 @@ import {
   h,
   onMounted,
   onUnmounted,
+  PropType,
   ref,
   renderSlot,
   Teleport,
@@ -19,7 +20,10 @@ const backTopProps = {
   },
   bottom: Number,
   right: Number,
-  target: [String, HTMLElement]
+  target: {
+    type: Object as PropType<HTMLElement>,
+    default: undefined
+  }
 };
 
 const defaultIcon = (
